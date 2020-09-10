@@ -18,21 +18,57 @@ Use it to make something cool, have fun, and share what you've learned
 with others.
 */
 
-body {
+:root {
     font-size: 22px;
-    font-weight: 300;
-    padding: 1em;
+    --contentWidth: 900px;
+    --wideWidth: calc(1.25 * var(--contentWidth));
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    line-height: var(--wp--preset--line-height--medium);
 }
 
-.wp-site-blocks {
-    max-width: 990px;
+.wp-block-post-content {
+    --paddingHorizontal: 1em;
+    padding: 0 var(--paddingHorizontal);
+}
+
+.wp-block-post-content > * {
+    max-width: var(--contentWidth);
     margin-left: auto;
     margin-right: auto;
 }
 
+.wp-block-post-content .alignwide {
+    width: calc(var(--wideWidth) + 2 * var(--paddingHorizontal));
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-block-post-content .alignfull {
+    transform: translateX(calc(0px - var(--paddingHorizontal)));
+    width: calc(100% + 2 * var(--paddingHorizontal));
+    max-width: calc(100% + 2 * var(--paddingHorizontal));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.wp-block-post-content .alignleft {
+    float: left;
+    margin-left: calc(50% - var(--contentWidth) / 2);
+}
+  
+.wp-block-post-content .alignright {
+    float: right;
+    margin-right: calc(50% - var(--contentWidth) / 2)
+}       
+
 a {
-    text-decoration: none;
-    border-bottom: 2px solid currentColor;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
     font-weight: 600;
 }
 
