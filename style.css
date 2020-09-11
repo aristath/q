@@ -107,7 +107,7 @@ h6 {
 
 .wp-site-blocks .alignright {
     float: right;
-    margin-right: calc(50% - var(--contentWidth) / 2)
+    margin-right: calc(50% - var(--contentWidth) / 2);
     margin-left: 1em;
 }       
 
