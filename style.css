@@ -102,13 +102,15 @@ h6 {
 .wp-site-blocks .alignleft {
     float: left;
     margin-left: calc(50% - var(--contentWidth) / 2);
-    margin-right: 1em;
+    margin-right: 2em;
+    max-width: 360px;
 }
 
 .wp-site-blocks .alignright {
     float: right;
     margin-right: calc(50% - var(--contentWidth) / 2);
-    margin-left: 1em;
+    margin-left: 2em;
+    max-width: 360px;
 }       
 
 .wp-site-blocks a {
