@@ -5,23 +5,21 @@ require_once 'includes/require-gutenberg.php';
 
 add_action( 'after_setup_theme', function() {
 
-    // Let WordPress manage the document title.
-    add_theme_support( 'title-tag' );
-
-    // Alignwide and alignfull classes in the block editor
-    add_theme_support( 'align-wide' );
-
-    // Adding support for core block visual styles.
-    // add_theme_support( 'wp-block-styles' );
-
-    // Adding support for responsive embedded content.
-    add_theme_support( 'responsive-embeds' );
-
-    // Add support for custom line height controls.
-    add_theme_support( 'custom-line-height' );
-
-    // Add support for experimental link color control.
-    add_theme_support( 'experimental-link-color' );
+    $supports = [
+        'title-tag',
+        'align-wide',
+        // 'wp-block-styles',
+        'responsive-embeds',
+        'custom-line-height',
+        'custom-units',
+        'experimental-link-color',
+        'experimental-custom-spacing',
+        'widgets-block-editor',
+        'block-nav-menus',
+    ];
+    foreach ( $supports as $support ) {
+        add_theme_support( $support );
+    }
 
     // Support a custom color palette.
     add_theme_support( 'editor-color-palette', [
