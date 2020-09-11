@@ -19,10 +19,12 @@ Use it to make something cool, have fun, and share what you've learned
 with others.
 */
 
+/***************************************
+Basic styles
+***************************************/
+
 :root {
     font-size: 22px;
-    --contentWidth: 900px;
-    --wideWidth: calc(1.5 * var(--contentWidth));
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     line-height: var(--wp--preset--line-height--medium);
 }
@@ -39,6 +41,9 @@ body {
     box-sizing: border-box;
 }
 
+/***************************************
+Headers
+***************************************/
 h1 {
     font-size: var(--wp--preset--font-size--huge);
     line-height: var(--wp--preset--line-height--small);
@@ -67,6 +72,14 @@ h5 {
 h6 {
     font-size: var(--wp--preset--font-size--small);
     line-height: var(--wp--preset--line-height--large);
+}
+
+/***************************************
+Layout
+***************************************/
+:root {
+    --contentWidth: 900px;
+    --wideWidth: calc(1.5 * var(--contentWidth));
 }
 
 .wp-site-blocks {
@@ -125,7 +138,9 @@ h6 {
     border-bottom-color: transparent;
 }
 
-/* Text meant only for screen readers. */
+/***************************************
+Accessibility
+***************************************/
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -153,6 +168,5 @@ h6 {
 	text-decoration: none;
 	top: 5px;
 	width: auto;
-	z-index: 100000;
-	/* Above WP toolbar. */
+	z-index: 100000; /* Above WP toolbar. */
 }
