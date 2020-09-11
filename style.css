@@ -35,6 +35,10 @@ body {
     padding: 0;
 }
 
+body {
+    background: var(--wp--preset--color--background);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -122,7 +126,17 @@ Layout
     /* margin-right: calc(50% - var(--contentWidth) / 2); */
     margin-left: 2em;
     max-width: 360px;
-}       
+}    
+
+/***************************************
+Dark mode.
+***************************************/
+@media (prefers-color-scheme: dark) {
+    html body {
+        --wp--preset--color--text: #fff;
+        --wp--preset--color--background: #000;
+    }
+}
 
 /***************************************
 Accessibility
