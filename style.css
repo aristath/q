@@ -90,7 +90,7 @@ Layout
 }
 
 .wp-site-blocks > *:not(.wp-block-post-content),
-.wp-site-blocks > .wp-block-post-content > * {
+.wp-site-blocks .wp-block-post-content > * {
     max-width: var(--contentWidth);
     margin-left: auto;
     margin-right: auto;
