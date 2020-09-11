@@ -112,18 +112,21 @@ Layout
 
 .wp-site-blocks .alignleft {
     float: left;
-    margin-left: calc(50% - var(--contentWidth) / 2);
+    /* margin-left: calc(50% - var(--contentWidth) / 2); */
     margin-right: 2em;
     max-width: 360px;
 }
 
 .wp-site-blocks .alignright {
     float: right;
-    margin-right: calc(50% - var(--contentWidth) / 2);
+    /* margin-right: calc(50% - var(--contentWidth) / 2); */
     margin-left: 2em;
     max-width: 360px;
 }       
 
+/***************************************
+Accessibility
+***************************************/
 .wp-site-blocks a {
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -136,9 +139,6 @@ Layout
     border-bottom-color: transparent;
 }
 
-/***************************************
-Accessibility
-***************************************/
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
