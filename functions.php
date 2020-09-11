@@ -38,11 +38,11 @@ add_action( 'after_setup_theme', function() {
 
 // Enqueue scripts and styles.
 add_action( 'wp_enqueue_scripts', function() {
-	wp_enqueue_style( 'q-styles', get_stylesheet_uri() );
+	wp_enqueue_style( 'q-styles', get_stylesheet_uri(), [], filemtime( get_theme_file_path( 'style.css' ) ) );
 } );
 
 // Enqueue editor styles.
 add_action( 'enqueue_block_editor_assets', function() {
 	wp_enqueue_style( 'q-styles', get_stylesheet_uri() );
-    wp_enqueue_style( 'q-block-styles', get_template_directory_uri() . '/editor.css' );
+    wp_enqueue_style( 'q-styles-editor', get_template_directory_uri() . '/editor.css' );
 } );
