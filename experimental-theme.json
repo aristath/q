@@ -51,7 +51,8 @@
 		"styles": {
 			"color": {
 				"background": "var(--wp--preset--color--background)",
-				"text": "var(--wp--preset--color--text)"
+				"text": "var(--wp--preset--color--text)",
+				"link": "var(--wp--preset--color--text)"
 			}
 		}
 	},
@@ -69,10 +70,6 @@
 	},
 	"core/heading/h1": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--huge)",
 				"lineHeight": "var(--wp--preset--line-height--small)"
@@ -81,10 +78,6 @@
 	},
 	"core/heading/h2": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--large)",
 				"lineHeight": "var(--wp--preset--line-height--small)"
@@ -93,10 +86,6 @@
 	},
 	"core/heading/h3": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--medium)",
 				"lineHeight": "var(--wp--preset--line-height--medium)"
@@ -105,10 +94,6 @@
 	},
 	"core/heading/h4": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--normal)",
 				"lineHeight": "var(--wp--preset--line-height--medium)"
@@ -117,10 +102,6 @@
 	},
 	"core/heading/h5": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--small)",
 				"lineHeight": "var(--wp--preset--line-height--large)"
@@ -129,10 +110,6 @@
 	},
 	"core/heading/h6": {
 		"styles": {
-			"color": {
-				"link": "var(--wp--preset--color--text)",
-				"text": "var(--wp--preset--color--text)"
-			},
 			"typography": {
 				"fontSize": "var(--wp--preset--font-size--small)",
 				"lineHeight": "var(--wp--preset--line-height--large)"
