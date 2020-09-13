@@ -105,8 +105,8 @@ Layout
 
 .wp-site-blocks .alignfull {
     transform: translateX(calc(0px - var(--paddingHorizontal)));
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% + 2 * var(--paddingHorizontal));
+    max-width: calc(100% + 2 * var(--paddingHorizontal));
     box-sizing: content-box;
 }
 
