@@ -1,0 +1,35 @@
+:root {
+    font-size: 22px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    line-height: var(--wp--preset--line-height--medium);
+}
+
+h1 {
+    font-size: var(--wp--preset--font-size--huge);
+    line-height: var(--wp--preset--line-height--small);
+}
+
+h2 {
+    font-size: var(--wp--preset--font-size--large);
+    line-height: var(--wp--preset--line-height--small);
+}
+
+h3 {
+    font-size: var(--wp--preset--font-size--medium);
+    line-height: var(--wp--preset--line-height--medium);
+}
+
+h4 {
+    font-size: var(--wp--preset--font-size--normal);
+    line-height: var(--wp--preset--line-height--medium);
+}
+
+h5 {
+    font-size: var(--wp--preset--font-size--small);
+    line-height: var(--wp--preset--line-height--large);
+}
+
+h6 {
+    font-size: var(--wp--preset--font-size--small);
+    line-height: var(--wp--preset--line-height--large);
+}
