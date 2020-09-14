@@ -34,6 +34,10 @@ class BlockStyles {
      * @return string       Returns the HTML.
      */
     public function render_block( $html, $block ) {
+        if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+            return;
+        }
+
         if ( ! in_array( $block['blockName'], self::$blocks, true ) ) {
             $path = get_theme_file_path( "styles/blocks/{$block['blockName']}.css" );
             if ( file_exists( $path ) ) {
