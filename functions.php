@@ -73,3 +73,7 @@ add_filter( 'render_block', function( $html, $block ) {
     }
     return $html;
 }, 10, 2 );
+
+// Add the block-styles loader.
+require_once 'includes/class-q-blocks-styles.php';
+new \QTheme\BlockStyles();
