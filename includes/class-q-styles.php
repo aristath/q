@@ -37,6 +37,9 @@ class Styles {
      * @return void
      */
     public function head() {
+        if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+            return;
+        }
         echo '<style>';
         foreach ( $this->styles as $style ) {
             include get_theme_file_path( "styles/$style.css" );
