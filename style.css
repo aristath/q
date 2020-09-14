@@ -194,3 +194,7 @@ Blocks styles.
 .wp-block-navigation:not(.has-background) .wp-block-navigation__container .wp-block-navigation-link:not(.has-text-color) {
     color: currentColor;
 }
+
+.wp-block-button a {
+    text-decoration: none;
+}
