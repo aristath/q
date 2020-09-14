@@ -70,3 +70,7 @@ new \QTheme\Styles();
 // Add the block-styles loader.
 require_once 'includes/class-q-blocks-styles.php';
 new \QTheme\BlockStyles();
+
+// Add scripts.
+require_once 'includes/class-q-scripts.php';
+new \QTheme\Scripts();
