@@ -136,12 +136,14 @@ Layout
 /***************************************
 Dark mode.
 ***************************************/
+/*
 @media (prefers-color-scheme: dark) {
-    html body {
+    :root {
         --wp--preset--color--text: #fff;
         --wp--preset--color--background: #000;
     }
 }
+*/
 
 /***************************************
 Accessibility
