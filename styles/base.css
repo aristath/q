@@ -7,6 +7,7 @@ body {
 body {
     background: var(--wp--preset--color--background);
     overflow-x: hidden;
+    line-height: 1.5;
 }
 
 * {

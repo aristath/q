@@ -13,7 +13,6 @@ add_action( 'after_setup_theme', function() {
         'align-wide',
         // 'wp-block-styles',
         'responsive-embeds',
-        'custom-line-height',
         'custom-units',
         'experimental-link-color',
         'experimental-custom-spacing',
