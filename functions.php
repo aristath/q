@@ -3,6 +3,9 @@
 // Require Gutenberg to be installed as a plugin with the FSE experiment enabled.`
 require_once 'includes/require-gutenberg.php';
 
+/**
+ * Add theme-supports.
+ */
 add_action( 'after_setup_theme', function() {
 
     $supports = [
@@ -36,7 +39,11 @@ add_action( 'after_setup_theme', function() {
     ] );
 } );
 
-// Make post-titles links when inside a query block.
+/**
+ * Make post-titles links when inside a query block.
+ * 
+ * This can be removed once https://github.com/WordPress/gutenberg/pull/25341 is merged.
+ */
 add_filter( 'render_block', function( $html, $block ) {
     if ( 'core/query-loop' === $block['blockName'] ) {
         preg_match( '/<h[^>]+wp-block-post-title.*<\/h[^>]+>|iU/', $html, $matches );
