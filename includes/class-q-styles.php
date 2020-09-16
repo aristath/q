@@ -62,6 +62,15 @@ class Styles {
                 [], 
                 filemtime( get_theme_file_path( "styles/$style.css" ) ) 
             );
+
+            if ( file_exists( get_theme_file_path( "styles/$style-editor.css" ) ) ) {
+                wp_enqueue_style( 
+                    "q-$style-editor", 
+                    get_theme_file_uri( "styles/$style-editor.css" ), 
+                    [], 
+                    filemtime( get_theme_file_path( "styles/$style.css" ) ) 
+                );    
+            }
         }
     }
 }

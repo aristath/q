@@ -1,0 +1,4 @@
+.editor-styles-wrapper.editor-styles-wrapper {
+    --contentWidth: 900px;
+    --wideWidth: calc(1.5 * var(--contentWidth));
+}
