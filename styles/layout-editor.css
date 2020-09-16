@@ -2,3 +2,7 @@
     --contentWidth: calc((16px + 0.8vw) * 37);
     --wideWidth: calc(1.5 * var(--contentWidth));
 }
+
+.wp-block {
+    max-width: var(--contentWidth);
+}
