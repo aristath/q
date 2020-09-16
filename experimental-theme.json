@@ -18,23 +18,23 @@
 				"fontSizes": [
 					{
 						"slug": "small",
-						"value": "16px"
+						"value": "calc(12px + 0.8vw)"
 					},
 					{
 						"slug": "normal",
-						"value": "22px"
+						"value": "calc(16px + 0.8vw)"
 					},
 					{
 						"slug": "medium",
-						"value": "30px"
+						"value": "calc(20px + 0.8vw)"
 					},
 					{
 						"slug": "large",
-						"value": "39px"
+						"value": "calc(25px + 0.8vw)"
 					},
 					{
 						"slug": "huge",
-						"value": "52px"
+						"value": "calc(31px + 0.8vw)"
 					}
 				],
 				"lineHeight": [

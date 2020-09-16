@@ -1,4 +1,4 @@
 .editor-styles-wrapper.editor-styles-wrapper {
-    --contentWidth: 900px;
+    --contentWidth: calc((16px + 0.8vw) * 37);
     --wideWidth: calc(1.5 * var(--contentWidth));
 }
