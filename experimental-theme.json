@@ -37,6 +37,7 @@
 						"value": "calc(41px + 0.8vw)"
 					}
 				],
+				"customFontSize": false,
 				"lineHeight": [
 					{
 						"slug": "small",
