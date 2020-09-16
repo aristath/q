@@ -22,19 +22,19 @@
 					},
 					{
 						"slug": "normal",
-						"value": "calc(16px + 0.8vw)"
+						"value": "calc(17px + 0.8vw)"
 					},
 					{
 						"slug": "medium",
-						"value": "calc(20px + 0.8vw)"
+						"value": "calc(23px + 0.8vw)"
 					},
 					{
 						"slug": "large",
-						"value": "calc(25px + 0.8vw)"
+						"value": "calc(31px + 0.8vw)"
 					},
 					{
 						"slug": "huge",
-						"value": "calc(31px + 0.8vw)"
+						"value": "calc(41px + 0.8vw)"
 					}
 				],
 				"lineHeight": [
