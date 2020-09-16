@@ -1,52 +1,57 @@
 {
 	"global": {
-		"presets": {
-			"color": [
-				{
-					"slug": "background",
-					"value": "#f5f7f9"
-				},
-				{
-					"slug": "text",
-					"value": "#000"
-				}
-			],
-			"font-size": [
-				{
-					"slug": "small",
-					"value": "16px"
-				},
-				{
-					"slug": "normal",
-					"value": "22px"
-				},
-				{
-					"slug": "medium",
-					"value": "30px"
-				},
-				{
-					"slug": "large",
-					"value": "39px"
-				},
-				{
-					"slug": "huge",
-					"value": "52px"
-				}
-			],
-			"line-height": [
-				{
-					"slug": "small",
-					"value": "1.2"
-				},
-				{
-					"slug": "medium",
-					"value": "1.55"
-				},
-				{
-					"slug": "large",
-					"value": "1.8"
-				}
-			]
+		"settings": {
+			"color": {
+				"palette": [
+					{
+						"slug": "background",
+						"value": "#f5f7f9"
+					},
+					{
+						"slug": "text",
+						"value": "#000"
+					}
+				],
+				"custom": false
+			},
+			"typography": {
+				"fontSizes": [
+					{
+						"slug": "small",
+						"value": "16px"
+					},
+					{
+						"slug": "normal",
+						"value": "22px"
+					},
+					{
+						"slug": "medium",
+						"value": "30px"
+					},
+					{
+						"slug": "large",
+						"value": "39px"
+					},
+					{
+						"slug": "huge",
+						"value": "52px"
+					}
+				],
+				"line-height": [
+					{
+						"slug": "small",
+						"value": "1.2"
+					},
+					{
+						"slug": "medium",
+						"value": "1.55"
+					},
+					{
+						"slug": "large",
+						"value": "1.8"
+					}
+				]	
+			}
 		},
 		"styles": {
 			"color": {
