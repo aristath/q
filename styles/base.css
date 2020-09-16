@@ -6,6 +6,7 @@ body {
 
 body {
     background: var(--wp--preset--color--background);
+    overflow-x: hidden;
 }
 
 * {
