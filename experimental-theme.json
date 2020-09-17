@@ -37,6 +37,32 @@
 						"value": "calc(41px + 0.8vw)"
 					}
 				],
+				"fontFamilies": [
+					{
+						"value": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+						"slug": "system",
+						"name": "System",
+						"group": "web-safe"
+					},
+					{
+						"value": "serif",
+						"name": "Serif",
+						"slug": "serif",
+						"group": "web-safe"
+					},
+					{
+						"value": "monospace",
+						"name": "Monospace",
+						"slug": "monospace",
+						"group": "web-safe"
+					}
+				],
+				"fontFamilyGroups": [
+					{
+						"name": "Web safe",
+						"slug": "web-safe"
+					}
+				],
 				"customFontSize": false,
 				"customLineHeight": true
 			}
