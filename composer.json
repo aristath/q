@@ -1,0 +1,35 @@
+{
+    "name": "aristath/a",
+    "type": "wordpress-theme",
+    "description": "Q WordPress theme",
+    "homepage": "https://aristath.github.io",
+    "license": "GPLv2 or later",
+    "authors": [{
+      "name": "aristath",
+      "email": "aristath@gmail.com",
+      "homepage": "https://aristath.github.io",
+      "role": "Developer"
+    }],
+    "require": {
+      "php": ">=5.6"
+    },
+    "require-dev": {
+      "composer/installers": "~1.0",
+      "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+      "wp-coding-standards/wpcs": "^2.3",
+      "wptrt/wpthemereview": "*",
+      "szepeviktor/phpstan-wordpress": "^0.6.0"
+    },
+    "scripts": {
+      "build": "git archive --format=zip -o gridd.zip --prefix=gridd/ origin/master .",
+      "ci:syntax": "find . -type f -not -path './packages/*' -name '*.php' -print0|xargs -0 -P 4 -L 1 -- php -l",
+      "ci:coding-standars": "phpcs . --parallel=4",
+      "ci:static-analysis": "phpstan analyze",
+      "test": [
+        "@ci:syntax",
+        "@ci:coding-standars",
+        "@ci:static-analysis"
+      ]
+    }
+  }
+  
