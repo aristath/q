@@ -36,7 +36,7 @@ jobs:
     - name: npm install
       run: npm install
     - name: stylelint
-      uses: icrawl/action-eslint@v1
+      uses: actions-hub/stylelint@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   phpcs:
