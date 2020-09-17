@@ -1,13 +1,13 @@
 .wp-site-blocks a {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    font-weight: 600;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	font-weight: 600;
 }
 
 .wp-site-blocks a:focus {
-    outline: 2px solid;
-    outline-offset: 2px;
-    border-bottom-color: transparent;
+	outline: 2px solid;
+	outline-offset: 2px;
+	border-bottom-color: transparent;
 }
 
 .screen-reader-text {

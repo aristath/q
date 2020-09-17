@@ -1,0 +1,12 @@
+/node-modules
+/vendor
+*.min.css
+*.min.js
+*.js
+*.php
+*.txt
+*.png
+*.json
+LICENSE
+*.lock
+*.sh

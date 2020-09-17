@@ -1,8 +1,8 @@
-.editor-styles-wrapper.editor-styles-wrapper {
-    --contentWidth: calc((16px + 0.8vw) * 37);
-    --wideWidth: calc(1.5 * var(--contentWidth));
+.editor-styles-wrapper.editor-styles-wrapper { /* stylelint-disable-line no-empty-source */
+	--contentWidth: calc((16px + 0.8vw) * 37);
+	--wideWidth: calc(1.5 * var(--contentWidth));
 }
 
 .wp-block {
-    max-width: var(--contentWidth);
+	max-width: var(--contentWidth);
 }

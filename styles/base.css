@@ -1,20 +1,20 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    background: var(--wp--preset--color--background);
-    overflow-x: hidden;
-    line-height: 1.5;
+	background: var(--wp--preset--color--background);
+	overflow-x: hidden;
+	line-height: 1.5;
 }
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }

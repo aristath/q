@@ -1,35 +1,35 @@
 :root {
-    font-size: var(--wp--preset--font-size--normal);
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    font-weight: 300;
+	font-size: var(--wp--preset--font-size--normal);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-weight: 300;
 }
 
 h1 {
-    font-size: var(--wp--preset--font-size--huge);
-    line-height: 1.4;
+	font-size: var(--wp--preset--font-size--huge);
+	line-height: 1.4;
 }
 
 h2 {
-    font-size: var(--wp--preset--font-size--large);
-    line-height: 1.4;
+	font-size: var(--wp--preset--font-size--large);
+	line-height: 1.4;
 }
 
 h3 {
-    font-size: var(--wp--preset--font-size--medium);
-    line-height: 1.55;
+	font-size: var(--wp--preset--font-size--medium);
+	line-height: 1.55;
 }
 
 h4 {
-    font-size: var(--wp--preset--font-size--normal);
-    line-height: 1.55;
+	font-size: var(--wp--preset--font-size--normal);
+	line-height: 1.55;
 }
 
 h5 {
-    font-size: var(--wp--preset--font-size--small);
-    line-height: 1.8;
+	font-size: var(--wp--preset--font-size--small);
+	line-height: 1.8;
 }
 
 h6 {
-    font-size: var(--wp--preset--font-size--small);
-    line-height: 1.8;
+	font-size: var(--wp--preset--font-size--small);
+	line-height: 1.8;
 }
