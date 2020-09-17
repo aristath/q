@@ -24,6 +24,21 @@ jobs:
   #     uses: icrawl/action-eslint@v1
   #     env:
   #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  stylelint:
+    name: stylelint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install node v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: npm install
+      run: npm install
+    - name: stylelint
+      uses: icrawl/action-eslint@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   phpcs:
     name: phpcs
     runs-on: ubuntu-latest
