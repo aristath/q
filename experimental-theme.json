@@ -5,11 +5,11 @@
 				"palette": [
 					{
 						"slug": "background",
-						"value": "#f5f7f9"
+						"color": "#f5f7f9"
 					},
 					{
 						"slug": "text",
-						"value": "#000"
+						"color": "#000"
 					}
 				],
 				"custom": false
@@ -18,23 +18,23 @@
 				"fontSizes": [
 					{
 						"slug": "small",
-						"value": "calc(12px + 0.8vw)"
+						"size": "calc(12px + 0.8vw)"
 					},
 					{
 						"slug": "normal",
-						"value": "calc(17px + 0.8vw)"
+						"size": "calc(17px + 0.8vw)"
 					},
 					{
 						"slug": "medium",
-						"value": "calc(23px + 0.8vw)"
+						"size": "calc(23px + 0.8vw)"
 					},
 					{
 						"slug": "large",
-						"value": "calc(31px + 0.8vw)"
+						"size": "calc(31px + 0.8vw)"
 					},
 					{
 						"slug": "huge",
-						"value": "calc(41px + 0.8vw)"
+						"size": "calc(41px + 0.8vw)"
 					}
 				],
 				"fontFamilies": [
