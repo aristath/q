@@ -53,42 +53,6 @@ add_action(
 	}
 );
 
-/**
- * Make post-titles links when inside a query block.
- *
- * This can be removed once https://github.com/WordPress/gutenberg/pull/25341 is merged.
- */
-add_filter(
-	'render_block',
-	function( $html, $block ) {
-		if ( 'core/query-loop' === $block['blockName'] ) {
-			preg_match( '/<h[^>]+wp-block-post-title.*<\/h[^>]+>|iU/', $html, $matches );
-			foreach ( $matches as $match ) {
-				preg_match( '/<h[^>]+>(.*)<\/h[^>]+>|iU/', $match, $post_title_match );
-				$post_title = $post_title_match[1];
-				$post       = get_page_by_title( $post_title, OBJECT, 'post' );
-
-				// Skip item if we couldn't get the post.
-				if ( ! $post ) {
-					continue;
-				}
-
-				// Add link to post-title.
-				$new_match = str_replace(
-					$post_title,
-					'<a href="' . get_permalink( $post ) . '">' . $post_title . '</a>',
-					$match
-				);
-
-				$html = str_replace( $match, $new_match, $html );
-			}
-		}
-		return $html;
-	},
-	10,
-	2
-);
-
 // Add global styles.
 require_once 'includes/Styles.php';
 new \QTheme\Styles();

@@ -1,13 +1,15 @@
 <!-- wp:template-part {"slug":"header","theme":"q"} /-->
 
 <!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:query {"queryId":1,"query":{"perPage":5,"offset":0}} -->
+<div class="wp-block-group"><div class="wp-block-group__inner-container">
+<!-- wp:query {"queryId":1,"query":{"perPage":10,"offset":0,"orderBy":"date"}} -->
 <!-- wp:query-loop -->
-<!-- wp:post-title /-->
+<!-- wp:post-title {"isLink":true} /-->
 
 <!-- wp:post-content /-->
 <!-- /wp:query-loop -->
 
 <!-- wp:query-pagination /-->
-<!-- /wp:query --></div></div>
+<!-- /wp:query -->
+</div></div>
 <!-- /wp:group -->
