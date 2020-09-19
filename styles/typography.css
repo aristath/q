@@ -33,3 +33,7 @@ h6 {
 	font-size: var(--wp--preset--font-size--small);
 	line-height: 1.8;
 }
+
+figcaption {
+	font-size: var(--wp--preset--font-size--small);
+}
