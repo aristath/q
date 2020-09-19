@@ -26,6 +26,7 @@ class Styles {
 		'typography',
 		'layout',
 		'a11y',
+		'comment-form',
 	];
 
 	/**

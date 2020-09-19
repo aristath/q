@@ -1,0 +1,8 @@
+.comment-form-comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form-comment textarea {
+    font-size: 1em;
+}
