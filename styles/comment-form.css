@@ -1,3 +1,9 @@
+.wp-block-post-comments-form {
+    display: block;
+    clear: both;
+    margin-top: 2em;
+}
+
 .comment-form-comment {
     display: flex;
     flex-direction: column;

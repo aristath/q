@@ -37,3 +37,8 @@ h6 {
 figcaption {
 	font-size: var(--wp--preset--font-size--small);
 }
+
+.has-drop-cap:not(:focus)::first-letter {
+	font-size: 4em;
+	font-weight: 200;
+}
