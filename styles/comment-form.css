@@ -8,8 +8,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.comment-form-comment textarea {
-    font-size: 1em;
-    padding: 1em;
-}

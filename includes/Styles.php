@@ -27,6 +27,7 @@ class Styles {
 		'layout',
 		'a11y',
 		'comment-form',
+		'forms',
 	];
 
 	/**
