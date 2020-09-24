@@ -28,6 +28,7 @@ class Styles {
 		'a11y',
 		'comment-form',
 		'forms',
+		'colors',
 	];
 
 	/**

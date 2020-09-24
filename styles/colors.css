@@ -1,0 +1,15 @@
+.has-light-color {
+    color: var(--wp--preset--color--light);
+}
+
+.has-dark-color {
+    color: var(--wp--preset--color--dark);
+}
+
+.has-light-background-color {
+    background-color: var(--wp--preset--color--light);
+}
+
+.has-dark-background-color {
+    background-color: var(--wp--preset--color--dark);
+}
