@@ -52,3 +52,32 @@
 	max-width: 100%;
 	box-sizing: border-box;
 }
+
+/*
+Start fix for bug: https://github.com/WordPress/gutenberg/issues/25610
+*/
+.wp-site-blocks .wp-block-template-part {
+	transform: translateX(calc(0px - var(--wp--custom--content--padding)));
+	width: calc(100% + 2 * var(--wp--custom--content--padding));
+	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
+	box-sizing: content-box;
+}
+
+.wp-site-blocks .wp-block-template-part > .wp-block-template-part:not(.alignfull) {
+	max-width: var(--wp--custom--content--default-width);
+	transform: translateX(calc(0px + var(--wp--custom--content--padding)));
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-site-blocks .wp-block-template-part > .wp-block-template-part.alignfull {
+	transform: none;
+}
+
+.wp-site-blocks .wp-block-template-part > .wp-block-template-part.alignwide {
+	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
+	box-sizing: content-box;
+}
+/*
+End fix for bug: https://github.com/WordPress/gutenberg/issues/25610
+*/
