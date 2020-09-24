@@ -1,6 +1,18 @@
 {
 	"global": {
 		"settings": {
+			"custom": {
+				"typo": {
+					"rootSize": 16,
+					"adaptiveRatio": 0.8,
+					"scale": 1.333
+				},
+				"content": {
+					"defaultWidth": "calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * 37)",
+					"wideWidth": "calc(1.5 * var(--wp--custom--content--default-width))",
+					"padding": "1em"
+				}
+			},
 			"color": {
 				"palette": [
 					{
@@ -65,18 +77,6 @@
 				],
 				"customFontSize": false,
 				"customLineHeight": true
-			},
-			"custom": {
-				"typo": {
-					"rootSize": 16,
-					"adaptiveRatio": 0.8,
-					"scale": 1.333
-				},
-				"content": {
-					"defaultWidth": "calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * 37)",
-					"wideWidth": "calc(1.5 * var(--wp--custom--content--default-width))",
-					"padding": "1em"
-				}
 			}
 		},
 		"styles": {
