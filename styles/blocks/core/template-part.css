@@ -1,0 +1,14 @@
+.wp-block-template-part {
+    padding: 0;
+}
+
+.wp-site-blocks .wp-block-template-part:not(.wp-block-template-part) {
+    transform: translateX(calc(0px - var(--wp--custom--content--padding)));
+    width: calc(100% + 2 * var(--wp--custom--content--padding));
+    max-width: calc(100% + 2 * var(--wp--custom--content--padding));
+    box-sizing: content-box;
+}
+
+.wp-site-blocks .wp-block-template-part > .alignfull {
+    width: 100%;
+}
