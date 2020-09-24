@@ -4,11 +4,11 @@
 			"color": {
 				"palette": [
 					{
-						"slug": "background",
+						"slug": "light",
 						"color": "#f5f7f9"
 					},
 					{
-						"slug": "text",
+						"slug": "dark",
 						"color": "#000"
 					}
 				],

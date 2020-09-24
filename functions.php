@@ -39,13 +39,13 @@ add_action(
 			'editor-color-palette',
 			[
 				[
-					'name'  => __( 'Black', 'q' ),
-					'slug'  => 'black',
+					'name'  => __( 'Dark', 'q' ),
+					'slug'  => 'dark',
 					'color' => '#000000',
 				],
 				[
-					'name'  => __( 'White', 'q' ),
-					'slug'  => 'white',
+					'name'  => __( 'Light', 'q' ),
+					'slug'  => 'light',
 					'color' => '#ffffff',
 				],
 			]
