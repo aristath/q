@@ -58,13 +58,13 @@
 						"group": "web-safe"
 					},
 					{
-						"fontFamily": "serif",
+						"fontFamily": "Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
 						"name": "Serif",
 						"slug": "serif",
 						"group": "web-safe"
 					},
 					{
-						"fontFamily": "monospace",
+						"fontFamily": "Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco, \"Courier New\", Courier, monospace",
 						"name": "Monospace",
 						"slug": "monospace",
 						"group": "web-safe"
