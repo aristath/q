@@ -68,12 +68,22 @@
 						"name": "Monospace",
 						"slug": "monospace",
 						"group": "web-safe"
+					},
+					{
+						"fontFamily": "Literata, Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
+						"name": "Literata",
+						"slug": "literata",
+						"group": "opinionated"
 					}
 				],
 				"fontFamilyGroups": [
 					{
 						"name": "Web safe",
 						"slug": "web-safe"
+					},
+					{
+						"name": "Opinionated",
+						"slug": "opinionated"
 					}
 				],
 				"customFontSize": false,

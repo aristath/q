@@ -32,12 +32,25 @@ class Styles {
 	];
 
 	/**
+	 * Webfonts URLs.
+	 *
+	 * @access protected
+	 * @since 1.0
+	 * @var array
+	 */
+	protected $webfonts = [
+		'https://fonts.googleapis.com/css2?family=Literata:wght@200&display=swap',
+	];
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
 	 * @since 1.0
 	 */
 	public function __construct() {
+		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
+
 		add_action( 'wp_head', [ $this, 'head' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
 	}
@@ -56,6 +69,11 @@ class Styles {
 		echo '<style>';
 		foreach ( $this->styles as $style ) {
 			include get_theme_file_path( "styles/$style.css" );
+		}
+
+		// Add webfonts.
+		foreach ( $this->webfonts as $webfont ) {
+			echo wptt_get_webfont_styles( $webfont ); // phpcs:ignore
 		}
 		echo '</style>';
 	}
@@ -84,6 +102,14 @@ class Styles {
 					filemtime( get_theme_file_path( "styles/$style.css" ) )
 				);
 			}
+		}
+
+		// Append webfonts to the last stylesheet we enqueued.
+		foreach ( $this->webfonts as $webfont ) {
+			wp_add_inline_style(
+				"q-$style",
+				wptt_get_webfont_styles( $webfont )
+			);
 		}
 	}
 }
