@@ -39,7 +39,7 @@ class Styles {
 	 * @var array
 	 */
 	protected $webfonts = [
-		'https://fonts.googleapis.com/css2?family=Literata:wght@200&display=swap',
+		'https://fonts.googleapis.com/css2?family=Literata&display=swap',
 	];
 
 	/**
@@ -104,11 +104,13 @@ class Styles {
 			}
 		}
 
-		// Append webfonts to the last stylesheet we enqueued.
+		// Enqueue webfonts.
 		foreach ( $this->webfonts as $webfont ) {
-			wp_add_inline_style(
-				"q-$style",
-				wptt_get_webfont_styles( $webfont )
+			wp_enqueue_style(
+				md5( $webfont ),
+				wptt_get_webfont_url( $webfont ),
+				[],
+				filemtime( get_theme_file_path( 'style.css' ) )
 			);
 		}
 	}

@@ -18,84 +18,284 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Use "woff" or "woff2".
 		 * This will change the user-agent user to make the request.
 		 *
-		 * @access public
-		 *
+		 * @access protected
 		 * @since 1.0.0
-		 *
 		 * @var string
 		 */
-		public $font_format = 'woff2';
+		protected $font_format = 'woff2';
 
 		/**
-		 * Get styles from URL.
+		 * The remote URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $remote_url;
+
+		/**
+		 * Base path.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $base_path;
+
+		/**
+		 * Base URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $base_url;
+
+		/**
+		 * Subfolder name.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $subfolder_name;
+
+		/**
+		 * The fonts folder.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $fonts_folder;
+
+		/**
+		 * The local stylesheet's path.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $local_stylesheet_path;
+
+		/**
+		 * The local stylesheet's URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $local_stylesheet_url;
+
+		/**
+		 * The remote CSS.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $remote_styles;
+
+		/**
+		 * The final CSS.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $css;
+
+		/**
+		 * Cleanup routine frequency.
+		 */
+		const CLEANUP_FREQUENCY = 'monthly';
+
+		/**
+		 * Constructor.
+		 *
+		 * Get a new instance of the object for a new URL.
 		 *
 		 * @access public
+		 * @since 1.1.0
+		 * @param string $url The remote URL.
+		 */
+		public function __construct( $url = '' ) {
+			$this->remote_url = $url;
+
+			// Add a cleanup routine.
+			$this->schedule_cleanup();
+			add_action( 'delete_fonts_folder', array( $this, 'delete_fonts_folder' ) );
+		}
+
+		/**
+		 * Get the local URL which contains the styles.
 		 *
-		 * @since 1.0.0
+		 * Fallback to the remote URL if we were unable to write the file locally.
 		 *
-		 * @param string $url The URL.
-		 *
+		 * @access public
+		 * @since 1.1.0
 		 * @return string
 		 */
-		public function get_styles( $url ) {
-			return $this->get_local_font_styles(
-				$this->get_cached_url_contents( $url )
-			);
+		public function get_url() {
+
+			// Check if the local stylesheet exists.
+			if ( $this->local_file_exists() ) {
+
+				// Attempt to update the stylesheet. Return the local URL on success.
+				if ( $this->write_stylesheet() ) {
+					return $this->get_local_stylesheet_url();
+				}
+			}
+
+			// If the local file exists, return its URL, with a fallback to the remote URL.
+			return file_exists( $this->get_local_stylesheet_path() )
+				? $this->get_local_stylesheet_url()
+				: $this->remote_url;
+		}
+
+		/**
+		 * Get the local stylesheet URL.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_url() {
+			if ( ! $this->local_stylesheet_url ) {
+				$this->local_stylesheet_url = str_replace(
+					$this->get_base_path(),
+					$this->get_base_url(),
+					$this->get_local_stylesheet_path()
+				);
+			}
+			return $this->local_stylesheet_url;
 		}
 
 		/**
 		 * Get styles with fonts downloaded locally.
 		 *
 		 * @access public
-		 *
 		 * @since 1.0.0
-		 *
-		 * @param string $css The styles.
-		 *
 		 * @return string
 		 */
-		public function get_local_font_styles( $css ) {
+		public function get_styles() {
+
+			// If we already have the local file, return its contents.
+			$local_stylesheet_contents = $this->get_local_stylesheet_contents();
+			if ( $local_stylesheet_contents ) {
+				return $local_stylesheet_contents;
+			}
+
+			// Get the remote URL contents.
+			$this->remote_styles = $this->get_remote_url_contents();
 
 			// Get an array of locally-hosted files.
-			$files = $this->get_local_files_from_css( $css );
+			$files = $this->get_local_files_from_css();
 
 			// Convert paths to URLs.
 			foreach ( $files as $remote => $local ) {
-				$files[ $remote ] = str_replace( WP_CONTENT_DIR, content_url(), $local );
+				$files[ $remote ] = str_replace(
+					$this->get_base_path(),
+					$this->get_base_url(),
+					$local
+				);
 			}
 
-			return str_replace(
+			$this->css = str_replace(
 				array_keys( $files ),
 				array_values( $files ),
-				$css
+				$this->remote_styles
 			);
+
+			$this->write_stylesheet();
+
+			return $this->css;
+		}
+
+		/**
+		 * Get local stylesheet contents.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string|false Returns the remote URL contents.
+		 */
+		public function get_local_stylesheet_contents() {
+			$local_path = $this->get_local_stylesheet_path();
+
+			// Check if the local stylesheet exists.
+			if ( $this->local_file_exists() ) {
+
+				// Attempt to update the stylesheet. Return false on fail.
+				if ( ! $this->write_stylesheet() ) {
+					return false;
+				}
+			}
+
+			return file_get_contents( $local_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		}
+
+		/**
+		 * Get remote file contents.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return string Returns the remote URL contents.
+		 */
+		public function get_remote_url_contents() {
+
+			/**
+			 * The user-agent we want to use.
+			 *
+			 * The default user-agent is the only one compatible with woff (not woff2)
+			 * which also supports unicode ranges.
+			 */
+			$user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8';
+
+			// Switch to a user-agent supporting woff2 if we don't need to support IE.
+			if ( 'woff2' === $this->font_format ) {
+				$user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0';
+			}
+
+			// Get the response.
+			$response = wp_remote_get( $this->remote_url, array( 'user-agent' => $user_agent ) );
+
+			// Early exit if there was an error.
+			if ( is_wp_error( $response ) ) {
+				return;
+			}
+
+			// Get the CSS from our response.
+			$contents = wp_remote_retrieve_body( $response );
+
+			// Early exit if there was an error.
+			if ( is_wp_error( $contents ) ) {
+				return;
+			}
+
+			return $contents;
 		}
 
 		/**
 		 * Download files mentioned in our CSS locally.
 		 *
 		 * @access public
-		 *
 		 * @since 1.0.0
-		 *
-		 * @param string $css The CSS we want to parse.
-		 *
 		 * @return array Returns an array of remote URLs and their local counterparts.
 		 */
-		public function get_local_files_from_css( $css ) {
-			$font_files = $this->get_files_from_css( $css );
-			$stored     = get_site_option( 'downloaded_font_files', [] );
+		public function get_local_files_from_css() {
+			$font_files = $this->get_remote_files_from_css();
+			$stored     = get_site_option( 'downloaded_font_files', array() );
 			$change     = false; // If in the end this is true, we need to update the cache option.
 
 			// If the fonts folder don't exist, create it.
-			if ( ! file_exists( WP_CONTENT_DIR . '/fonts' ) ) {
-				$this->get_filesystem()->mkdir( WP_CONTENT_DIR . '/fonts', FS_CHMOD_DIR );
+			if ( ! file_exists( $this->get_fonts_folder() ) ) {
+				$this->get_filesystem()->mkdir( $this->get_fonts_folder(), FS_CHMOD_DIR );
 			}
 
 			foreach ( $font_files as $font_family => $files ) {
 
 				// The folder path for this font-family.
-				$folder_path = WP_CONTENT_DIR . '/fonts/' . $font_family;
+				$folder_path = $this->get_fonts_folder() . '/' . $font_family;
 
 				// If the folder doesn't exist, create it.
 				if ( ! file_exists( $folder_path ) ) {
@@ -152,6 +352,13 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			// If there were changes, update the option.
 			if ( $change ) {
+
+				// Cleanup the option and then save it.
+				foreach ( $stored as $url => $path ) {
+					if ( ! file_exists( $path ) ) {
+						unset( $stored[ $url ] );
+					}
+				}
 				update_site_option( 'downloaded_font_files', $stored );
 			}
 
@@ -159,106 +366,17 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		}
 
 		/**
-		 * Get cached url contents.
-		 *
-		 * If a cache doesn't already exist, get the URL contents from remote
-		 * and cache the result.
-		 * We're using a transient for caches because because webfonts get updated
-		 * and therefore need to be periodically checked for updates.
-		 *
-		 * @access public
-		 *
-		 * @since 3.1.0
-		 *
-		 * @param string $url The URL we want to get the contents from.
-		 *
-		 * @return string Returns the remote URL contents.
-		 */
-		public function get_cached_url_contents( $url = '' ) {
-
-			// Try to retrieved cached response from the gfonts API.
-			$contents       = false;
-			$transient_name = 'url_contents_' . md5( $url );
-			$contents       = get_site_transient( $transient_name );
-
-			// If the transient is empty we need to get contents from the remote URL.
-			if ( ! $contents ) {
-
-				// Get the contents from remote.
-				$contents = $this->get_url_contents( $url );
-
-				// If we got the contents successfully, store them in a transient.
-				// We're using a transient and not an option because fonts get updated
-				// so we want to be able to get the latest version weekly.
-				if ( $contents ) {
-					set_site_transient( $transient_name, $contents, WEEK_IN_SECONDS );
-				}
-			}
-
-			return $contents;
-		}
-
-		/**
-		 * Get remote file contents.
-		 *
-		 * @access public
-		 *
-		 * @since 3.1.0
-		 *
-		 * @param string $url The URL we want to get the contents from.
-		 *
-		 * @return string Returns the remote URL contents.
-		 */
-		public function get_url_contents( $url = '' ) {
-
-			/**
-			 * The user-agent we want to use.
-			 *
-			 * The default user-agent is the only one compatible with woff (not woff2)
-			 * which also supports unicode ranges.
-			 */
-			$user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8';
-
-			// Switch to a user-agent supporting woff2 if we don't need to support IE.
-			if ( 'woff2' === $this->font_format ) {
-				$user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0';
-			}
-
-			// Get the response.
-			$response = wp_remote_get( $url, [ 'user-agent' => $user_agent ] );
-
-			// Early exit if there was an error.
-			if ( is_wp_error( $response ) ) {
-				return;
-			}
-
-			// Get the CSS from our response.
-			$contents = wp_remote_retrieve_body( $response );
-
-			// Early exit if there was an error.
-			if ( is_wp_error( $contents ) ) {
-				return;
-			}
-
-			return $contents;
-		}
-
-		/**
 		 * Get font files from the CSS.
 		 *
 		 * @access public
-		 *
 		 * @since 1.0.0
-		 *
-		 * @param string $css The CSS we want to parse.
-		 *
 		 * @return array Returns an array of font-families and the font-files used.
 		 */
-		public function get_files_from_css( $css ) {
+		public function get_remote_files_from_css() {
 
-			$font_faces = explode( '@font-face', $css );
+			$font_faces = explode( '@font-face', $this->remote_styles );
 
-			$result = [];
+			$result = array();
 
 			// Loop all our font-face declarations.
 			foreach ( $font_faces as $font_face ) {
@@ -281,13 +399,13 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 				$font_family = 'unknown';
 				if ( isset( $matched_font_families[0] ) && isset( $matched_font_families[0][0] ) ) {
 					$font_family = rtrim( ltrim( $matched_font_families[0][0], 'font-family:' ), ';' );
-					$font_family = trim( str_replace( [ "'", ';' ], '', $font_family ) );
+					$font_family = trim( str_replace( array( "'", ';' ), '', $font_family ) );
 					$font_family = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
 				}
 
 				// Make sure the font-family is set in our array.
 				if ( ! isset( $result[ $font_family ] ) ) {
-					$result[ $font_family ] = [];
+					$result[ $font_family ] = array();
 				}
 
 				// Get files for this font-family and add them to the array.
@@ -310,12 +428,186 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		}
 
 		/**
+		 * Write the CSS to the filesystem.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @return string|false Returns the absolute path of the file on success, or false on fail.
+		 */
+		protected function write_stylesheet() {
+			$file_path  = $this->get_local_stylesheet_path();
+			$filesystem = $this->get_filesystem();
+
+			// If the folder doesn't exist, create it.
+			if ( ! file_exists( $this->get_fonts_folder() ) ) {
+				$this->get_filesystem()->mkdir( $this->get_fonts_folder(), FS_CHMOD_DIR );
+			}
+
+			// If the file doesn't exist, create it. Return false if it can not be created.
+			if ( ! $filesystem->exists( $file_path ) && ! $filesystem->touch( $file_path ) ) {
+				return false;
+			}
+
+			// If we got this far, we need to write the file.
+			// Get the CSS.
+			if ( ! $this->css ) {
+				$this->get_styles();
+			}
+
+			// Put the contents in the file. Return false if that fails.
+			if ( ! $filesystem->put_contents( $file_path, $this->css ) ) {
+				return false;
+			}
+
+			return $file_path;
+		}
+
+		/**
+		 * Get the stylesheet path.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_path() {
+			if ( ! $this->local_stylesheet_path ) {
+				$this->local_stylesheet_path = $this->get_fonts_folder() . '/' . $this->get_local_stylesheet_filename() . '.css';
+			}
+			return $this->local_stylesheet_path;
+		}
+
+		/**
+		 * Get the local stylesheet filename.
+		 *
+		 * This is a hash, generated from the site-URL, the wp-content path and the URL.
+		 * This way we can avoid issues with sites changing their URL, or the wp-content path etc.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_filename() {
+			return md5( $this->get_base_url() . $this->get_base_path() . $this->remote_url );
+		}
+
+		/**
+		 * Set the font-format to be used.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @param string $format The format to be used. Use "woff" or "woff2".
+		 * @return void
+		 */
+		public function set_font_format( $format = 'woff2' ) {
+			$this->font_format = $format;
+		}
+
+		/**
+		 * Check if the local stylesheet exists.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return bool
+		 */
+		public function local_file_exists() {
+			return ( ! file_exists( $this->get_local_stylesheet_path() ) );
+		}
+
+		/**
+		 * Get the base path.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_base_path() {
+			if ( ! $this->base_path ) {
+				$this->base_path = apply_filters( 'wptt_get_local_fonts_base_path', $this->get_filesystem()->wp_content_dir() );
+			}
+			return $this->base_path;
+		}
+
+		/**
+		 * Get the base URL.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_base_url() {
+			if ( ! $this->base_url ) {
+				$this->base_url = apply_filters( 'wptt_get_local_fonts_base_url', content_url() );
+			}
+			return $this->base_url;
+		}
+
+		/**
+		 * Get the subfolder name.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_subfolder_name() {
+			if ( ! $this->subfolder_name ) {
+				$this->subfolder_name = apply_filters( 'wptt_get_local_fonts_subfolder_name', 'fonts' );
+			}
+			return $this->subfolder_name;
+		}
+
+		/**
+		 * Get the folder for fonts.
+		 *
+		 * @access public
+		 * @return string
+		 */
+		public function get_fonts_folder() {
+			if ( ! $this->fonts_folder ) {
+				$this->fonts_folder = $this->get_base_path();
+				if ( $this->get_subfolder_name() ) {
+					$this->fonts_folder .= '/' . $this->get_subfolder_name();
+				}
+			}
+			return $this->fonts_folder;
+		}
+
+		/**
+		 * Schedule a cleanup.
+		 *
+		 * Deletes the fonts files on a regular basis.
+		 * This way font files will get updated regularly,
+		 * and we avoid edge cases where unused files remain in the server.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return void
+		 */
+		public function schedule_cleanup() {
+			if ( ! is_multisite() || ( is_multisite() && is_main_site() ) ) {
+				if ( ! wp_next_scheduled( 'delete_fonts_folder' ) && ! wp_installing() ) {
+					wp_schedule_event( time(), self::CLEANUP_FREQUENCY, 'delete_fonts_folder' );
+				}
+			}
+		}
+
+		/**
+		 * Delete the fonts folder.
+		 *
+		 * This runs as part of a cleanup routine.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return bool
+		 */
+		public function delete_fonts_folder() {
+			return $this->get_filesystem()->delete( $this->get_fonts_folder(), true );
+		}
+
+		/**
 		 * Get the filesystem.
 		 *
 		 * @access protected
-		 *
 		 * @since 1.0.0
-		 *
 		 * @return WP_Filesystem
 		 */
 		protected function get_filesystem() {
@@ -329,21 +621,6 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 				WP_Filesystem();
 			}
 			return $wp_filesystem;
-		}
-
-		/**
-		 * Set the font-format to be used.
-		 *
-		 * @access public
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param string $format The format to be used. Use "woff" or "woff2".
-		 *
-		 * @return void
-		 */
-		public function set_font_format( $format = 'woff2' ) {
-			$this->font_format = $format;
 		}
 	}
 }
@@ -365,8 +642,26 @@ if ( ! function_exists( 'wptt_get_webfont_styles' ) ) {
 	 * @return string Returns the CSS.
 	 */
 	function wptt_get_webfont_styles( $url, $format = 'woff2' ) {
-		$font = new WPTT_WebFont_Loader();
+		$font = new WPTT_WebFont_Loader( $url );
 		$font->set_font_format( $format );
-		return $font->get_styles( $url );
+		return $font->get_styles();
+	}
+}
+
+if ( ! function_exists( 'wptt_get_webfont_url' ) ) {
+	/**
+	 * Get a stylesheet URL for a webfont.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $url    The URL of the remote webfont.
+	 * @param string $format The font-format. If you need to support IE, change this to "woff".
+	 *
+	 * @return string Returns the CSS.
+	 */
+	function wptt_get_webfont_url( $url, $format = 'woff2' ) {
+		$font = new WPTT_WebFont_Loader( $url );
+		$font->set_font_format( $format );
+		return $font->get_url();
 	}
 }
