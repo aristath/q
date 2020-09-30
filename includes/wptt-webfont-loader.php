@@ -124,7 +124,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			// Add a cleanup routine.
 			$this->schedule_cleanup();
-			add_action( 'delete_fonts_folder', array( $this, 'delete_fonts_folder' ) );
+			add_action( 'delete_fonts_folder', [ $this, 'delete_fonts_folder' ] );
 		}
 
 		/**
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			}
 
 			// Get the response.
-			$response = wp_remote_get( $this->remote_url, array( 'user-agent' => $user_agent ) );
+			$response = wp_remote_get( $this->remote_url, [ 'user-agent' => $user_agent ] );
 
 			// Early exit if there was an error.
 			if ( is_wp_error( $response ) ) {
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_local_files_from_css() {
 			$font_files = $this->get_remote_files_from_css();
-			$stored     = get_site_option( 'downloaded_font_files', array() );
+			$stored     = get_site_option( 'downloaded_font_files', [] );
 			$change     = false; // If in the end this is true, we need to update the cache option.
 
 			// If the fonts folder don't exist, create it.
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			$font_faces = explode( '@font-face', $this->remote_styles );
 
-			$result = array();
+			$result = [];
 
 			// Loop all our font-face declarations.
 			foreach ( $font_faces as $font_face ) {
@@ -399,13 +399,13 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 				$font_family = 'unknown';
 				if ( isset( $matched_font_families[0] ) && isset( $matched_font_families[0][0] ) ) {
 					$font_family = rtrim( ltrim( $matched_font_families[0][0], 'font-family:' ), ';' );
-					$font_family = trim( str_replace( array( "'", ';' ), '', $font_family ) );
+					$font_family = trim( str_replace( [ "'", ';' ], '', $font_family ) );
 					$font_family = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
 				}
 
 				// Make sure the font-family is set in our array.
 				if ( ! isset( $result[ $font_family ] ) ) {
-					$result[ $font_family ] = array();
+					$result[ $font_family ] = [];
 				}
 
 				// Get files for this font-family and add them to the array.
