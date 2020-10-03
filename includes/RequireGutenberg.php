@@ -69,17 +69,17 @@ class RequireGutenberg {
 		}
 		?>
 		<div class="notice notice-warning require-gutenberg-notice-wrapper notice-alt<?php echo ( $active_step ) ? ' active-step-' . esc_attr( $active_step ) : ''; ?>">
-			<p><?php esc_html_e( 'This is an experimental theme and requires the Gutenberg plugin to be installed with the "Full Site Editing" experiment enabled.', 'kiss' ); ?></p>
+			<p><?php esc_html_e( 'This is an experimental theme and requires the Gutenberg plugin to be installed with the "Full Site Editing" experiment enabled.', 'q' ); ?></p>
 			<div class="require-gutenberg require-gutenberg-install">
-				<p><?php esc_html_e( 'The Gutenberg plugin is not installed. Click the button below to install it.', 'kiss' ); ?></p>
-				<p><button class="button" onclick="wpThemesRequireGutenberg.installPlugin();" aria-label="<?php esc_attr_e( 'Install Gutenberg', 'kiss' ); ?>"><?php esc_html_e( 'Install Gutenberg', 'kiss' ); ?></button></p>
+				<p><?php esc_html_e( 'The Gutenberg plugin is not installed. Click the button below to install it.', 'q' ); ?></p>
+				<p><button class="button" onclick="wpThemesRequireGutenberg.installPlugin();" aria-label="<?php esc_attr_e( 'Install Gutenberg', 'q' ); ?>"><?php esc_html_e( 'Install Gutenberg', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-activate">
-				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated, or the "Full Site Editing" experiment is not enabled. Click the button below to enable the plugin and experiment.', 'kiss' ); ?></p>
-				<p><button class="button" onclick="wpThemesRequireGutenberg.activatePlugin();"><?php esc_html_e( 'Activate Plugin & Experiment.', 'kiss' ); ?></button></p>
+				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated, or the "Full Site Editing" experiment is not enabled. Click the button below to enable the plugin and experiment.', 'q' ); ?></p>
+				<p><button class="button" onclick="wpThemesRequireGutenberg.activatePlugin();"><?php esc_html_e( 'Activate Plugin & Experiment.', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-success">
-				<p><?php esc_html_e( 'Congratulations! All steps required were completed. Enjoy your Full Site Editing experience.', 'kiss' ); ?></p>
+				<p><?php esc_html_e( 'Congratulations! All steps required were completed. Enjoy your Full Site Editing experience.', 'q' ); ?></p>
 			</div>
 		</div>
 		<?php
@@ -123,9 +123,9 @@ class RequireGutenberg {
 
 				// Tweak the button.
 				jQuery( '.notice .require-gutenberg-install .button' )
-					.html( '<?php esc_html_e( 'Installing Gutenberg...', 'kiss' ); ?>' )
+					.html( '<?php esc_html_e( 'Installing Gutenberg...', 'q' ); ?>' )
 					.addClass( 'updating-message' )
-					.attr( 'aria-label', '<?php esc_attr_e( 'Installing Gutenberg...', 'kiss' ); ?>' );
+					.attr( 'aria-label', '<?php esc_attr_e( 'Installing Gutenberg...', 'q' ); ?>' );
 
 				// Install the plugin.
 				wp.updates.installPlugin( {
@@ -145,7 +145,7 @@ class RequireGutenberg {
 						// Remove previous errors.
 						jQuery( '.require-gutenberg-install .error' ).remove();
 						jQuery( '.require-gutenberg-install' )
-							.append( '<div class="error"><p><?php esc_html_e( 'An error occured:', 'kiss' ); ?></p><p>' + e.message + '</p><p><?php esc_html_e( 'Please check your browser console for more details', 'kiss' ); ?></p></div>' );
+							.append( '<div class="error"><p><?php esc_html_e( 'An error occured:', 'q' ); ?></p><p>' + e.message + '</p><p><?php esc_html_e( 'Please check your browser console for more details', 'q' ); ?></p></div>' );
 
 						console.log( e );
 					}
@@ -177,7 +177,7 @@ class RequireGutenberg {
 
 						// There was an error.
 						jQuery( '.require-gutenberg-activate' )
-							.append( '<div class="error"><p><?php esc_html_e( 'An error occured', 'kiss' ); ?>:</p><p><?php esc_html_e( 'Could not activate the plugin. Please go to the plugins page on your dashboard and manually activate the plugin.', 'kiss' ); ?></p></div>' );
+							.append( '<div class="error"><p><?php esc_html_e( 'An error occured', 'q' ); ?>:</p><p><?php esc_html_e( 'Could not activate the plugin. Please go to the plugins page on your dashboard and manually activate the plugin.', 'q' ); ?></p></div>' );
 					}
 				} );
 			},

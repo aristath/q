@@ -34,12 +34,12 @@ add_action(
 			'editor-color-palette',
 			[
 				[
-					'name'  => __( 'Dark', 'kiss' ),
+					'name'  => __( 'Dark', 'q' ),
 					'slug'  => 'dark',
 					'color' => '#000000',
 				],
 				[
-					'name'  => __( 'Light', 'kiss' ),
+					'name'  => __( 'Light', 'q' ),
 					'slug'  => 'light',
 					'color' => '#ffffff',
 				],

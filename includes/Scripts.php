@@ -92,7 +92,7 @@ class Scripts {
 				skipLink.classList.add( 'skip-link' );
 				skipLink.classList.add( 'screen-reader-text' );
 				skipLink.href = '#' + contentElID;
-				skipLink.innerHTML = '<?php esc_attr_e( 'Skip to content', 'kiss' ); ?>';
+				skipLink.innerHTML = '<?php esc_attr_e( 'Skip to content', 'q' ); ?>';
 
 				// Inject the skip link.
 				parentEl.insertAdjacentElement( 'afterbegin', skipLink );
