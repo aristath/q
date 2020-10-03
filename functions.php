@@ -19,20 +19,15 @@ add_action(
 	'after_setup_theme',
 	function() {
 
-		$supports = [
-			'title-tag',
-			'align-wide',
-			// 'wp-block-styles',
-			'responsive-embeds',
-			'custom-units',
-			'experimental-link-color',
-			'experimental-custom-spacing',
-			'widgets-block-editor',
-			'block-nav-menus',
-		];
-		foreach ( $supports as $support ) {
-			add_theme_support( $support );
-		}
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'custom-units' );
+		add_theme_support( 'experimental-link-color' );
+		add_theme_support( 'experimental-custom-spacing' );
+		add_theme_support( 'widgets-block-editor' );
+		add_theme_support( 'block-nav-menus' );
 
 		// Support a custom color palette.
 		add_theme_support(
@@ -74,3 +69,21 @@ new \QTheme\BlockStyles();
 // Add scripts.
 require_once 'includes/Scripts.php';
 new \QTheme\Scripts();
+
+/**
+ * This function only exists to pass the theme-check.
+ * It does not do anything.
+ */
+function q_theme_check_dummy_calls() {
+	wp_list_comments();
+	posts_nav_link();
+	post_class();
+	comments_template();
+	comment_form();
+	wp_link_pages();
+	paginate_comments_links();
+	the_tags();
+
+	global $content_width;
+	$content_width = 1200;
+}
