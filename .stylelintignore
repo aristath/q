@@ -10,3 +10,4 @@
 LICENSE
 *.lock
 *.sh
+./style.css
