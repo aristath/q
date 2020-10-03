@@ -231,7 +231,9 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 				}
 			}
 
-			return file_get_contents( $local_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			ob_start();
+			include $local_path;
+			return ob_get_clean();
 		}
 
 		/**
