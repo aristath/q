@@ -69,21 +69,3 @@ new \QTheme\BlockStyles();
 // Add scripts.
 require_once 'includes/Scripts.php';
 new \QTheme\Scripts();
-
-/**
- * This function only exists to pass the theme-check.
- * It does not do anything.
- */
-function q_theme_check_dummy_calls() {
-	wp_list_comments();
-	posts_nav_link();
-	post_class();
-	comments_template();
-	comment_form();
-	wp_link_pages();
-	paginate_comments_links();
-	the_tags();
-
-	global $content_width;
-	$content_width = 1200;
-}
