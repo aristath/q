@@ -69,3 +69,14 @@ new \QTheme\BlockStyles();
 // Add scripts.
 require_once 'includes/Scripts.php';
 new \QTheme\Scripts();
+
+
+/**
+ * Show '(no title)' in frontend if post has no title to make it selectable
+ */
+add_filter( 'the_title', function($title){
+	if (! is_admin() && empty( $title )) {
+		$title = __( '(no title)' );
+    }
+    return $title;
+});
