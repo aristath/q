@@ -65,7 +65,7 @@ add_filter(
 	'the_title',
 	function( $title ) {
 		if ( ! is_admin() && empty( $title ) ) {
-			$title = __( '(no title)' , 'q');
+			$title = __( '(no title)', 'q' );
 		}
 
 		return $title;
