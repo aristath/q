@@ -40,7 +40,7 @@ add_action(
 				[
 					'name'  => __( 'Light', 'q' ),
 					'slug'  => 'light',
-					'color' => '#ffffff',
+					'color' => '#f5f7f9',
 				],
 			]
 		);
