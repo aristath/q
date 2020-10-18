@@ -9,48 +9,14 @@ on:
       - master
 
 jobs:
-  # eslint:
-  #   name: eslint
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: hallee/eslint-action@1.0.3
-  #       with:
-  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  stylelint:
-    name: stylelint
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: install node v12
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12
-    - name: npm install
-      run: npm install
-    - name: stylelint
-      uses: actions-hub/stylelint@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  phpcs:
-    name: phpcs
+  php8:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: composer install
-      run: composer install
-    - name: PHPCS check
-      uses: chekalsky/phpcs-action@v1
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
       with:
-        phpcs_bin_path: './vendor/bin/phpcs'
-  phpstan:
-    name: phpstan
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: composer install
+        php-version: '8.0'
+    - name: "Let's see!"
       run: composer install
-    - name: PHPStan analysis
-      run: composer run-script ci:static-analysis
