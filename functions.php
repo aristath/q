@@ -57,6 +57,20 @@ add_filter(
 	}
 );
 
+/**
+ * Show '(no title)' in frontend if post has no title to make it selectable
+ */
+add_filter(
+	'the_title',
+	function( $title ) {
+		if ( ! is_admin() && empty( $title ) ) {
+			$title = __( '(no title)', 'q' );
+		}
+
+		return $title;
+	}
+);
+
 // Add global styles.
 require_once 'includes/Styles.php';
 new \QTheme\Styles();
