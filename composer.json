@@ -3,7 +3,7 @@
     "type": "wordpress-theme",
     "description": "Q WordPress theme",
     "homepage": "https://aristath.github.io",
-    "license": "GPLv2 or later",
+    "license": "GPL-2.0-or-later",
     "authors": [{
       "name": "aristath",
       "email": "aristath@gmail.com",
@@ -18,7 +18,7 @@
       "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
       "wp-coding-standards/wpcs": "^2.3",
       "wptrt/wpthemereview": "*",
-      "szepeviktor/phpstan-wordpress": "^0.6.6"
+      "szepeviktor/phpstan-wordpress": "^0.6.0"
     },
     "scripts": {
       "build": "git archive --format=zip -o gridd.zip --prefix=gridd/ origin/master .",
