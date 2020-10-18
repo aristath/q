@@ -17,8 +17,7 @@
       "composer/installers": "~1.0",
       "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
       "wp-coding-standards/wpcs": "^2.3",
-      "wptrt/wpthemereview": "*",
-      "szepeviktor/phpstan-wordpress": "^0.6.6"
+      "wptrt/wpthemereview": "*"
     },
     "scripts": {
       "build": "git archive --format=zip -o gridd.zip --prefix=gridd/ origin/master .",
