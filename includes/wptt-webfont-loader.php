@@ -263,16 +263,11 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			// Early exit if there was an error.
 			if ( is_wp_error( $response ) ) {
-				return;
+				return '';
 			}
 
 			// Get the CSS from our response.
 			$contents = wp_remote_retrieve_body( $response );
-
-			// Early exit if there was an error.
-			if ( is_wp_error( $contents ) ) {
-				return;
-			}
 
 			return $contents;
 		}
@@ -610,7 +605,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return WP_Filesystem
+		 * @return \WP_Filesystem_Base
 		 */
 		protected function get_filesystem() {
 			global $wp_filesystem;

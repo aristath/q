@@ -1,0 +1,14 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: 5
+    # TODO
+    #level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    paths:
+        - comments.php
+        - footer.php
+        - functions.php
+        - header.php
+        - index.php
+        - includes/
