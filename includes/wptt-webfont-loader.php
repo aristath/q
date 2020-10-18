@@ -269,11 +269,6 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			// Get the CSS from our response.
 			$contents = wp_remote_retrieve_body( $response );
 
-			// Early exit if there was an error.
-			if ( '' === $contents ) {
-				return '';
-			}
-
 			return $contents;
 		}
 
