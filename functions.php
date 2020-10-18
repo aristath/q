@@ -9,8 +9,7 @@
 
 // Require Gutenberg to be installed as a plugin with the FSE experiment enabled.
 require_once 'includes/RequireGutenberg.php';
-$q_gutenberg_require = new \QTheme\RequireGutenberg();
-$q_gutenberg_require->run();
+(new \QTheme\RequireGutenberg())->run();
 
 /**
  * Add theme-supports.
