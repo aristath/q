@@ -68,7 +68,7 @@ class RequireGutenberg {
 			return;
 		}
 		?>
-		<div class="notice notice-warning require-gutenberg-notice-wrapper notice-alt<?php echo ( $active_step ) ? ' active-step-' . esc_attr( $active_step ) : ''; ?>">
+		<div class="notice notice-warning require-gutenberg-notice-wrapper notice-alt<?php echo ' active-step-' . esc_attr( $active_step ); ?>">
 			<p><?php esc_html_e( 'This is an experimental theme and requires the Gutenberg plugin to be installed with the "Full Site Editing" experiment enabled.', 'q' ); ?></p>
 			<div class="require-gutenberg require-gutenberg-install">
 				<p><?php esc_html_e( 'The Gutenberg plugin is not installed. Click the button below to install it.', 'q' ); ?></p>
@@ -279,9 +279,9 @@ class RequireGutenberg {
 	 *
 	 * @access public
 	 *
-	 * @param string   $new_name  Name of the new theme.
-	 * @param WP_Theme $new_theme WP_Theme instance of the new theme.
-	 * @param WP_Theme $old_theme WP_Theme instance of the old theme.
+	 * @param string    $new_name  Name of the new theme.
+	 * @param \WP_Theme $new_theme WP_Theme instance of the new theme.
+	 * @param \WP_Theme $old_theme WP_Theme instance of the old theme.
 	 *
 	 * @return void
 	 */

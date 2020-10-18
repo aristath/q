@@ -44,3 +44,13 @@ jobs:
       uses: chekalsky/phpcs-action@v1
       with:
         phpcs_bin_path: './vendor/bin/phpcs'
+  phpstan:
+    name: phpstan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: composer install
+      run: composer install
+    - name: PHPStan analysis
+      run: composer run-script ci:static-analysis

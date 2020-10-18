@@ -45,7 +45,7 @@ class BlockStyles {
 	 */
 	public function render_block( $html, $block ) {
 		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-			return;
+			return '';
 		}
 
 		if ( ! in_array( $block['blockName'], self::$blocks, true ) ) {
