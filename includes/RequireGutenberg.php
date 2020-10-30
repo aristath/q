@@ -223,6 +223,9 @@ class RequireGutenberg {
 	 * @return bool
 	 */
 	public function is_experiment_enabled() {
+		if ( function_exists( 'gutenberg_is_fse_theme' ) ) {
+			return true;
+		}
 		$option = (array) get_option( 'gutenberg-experiments', [] );
 		return ( isset( $option['gutenberg-full-site-editing'] ) && '1' === $option['gutenberg-full-site-editing'] );
 	}
@@ -246,6 +249,10 @@ class RequireGutenberg {
 
 		// Activate plugin.
 		$result = activate_plugin( 'gutenberg/gutenberg.php' );
+
+		if ( function_exists( 'gutenberg_is_fse_theme' ) ) {
+			wp_die( 'success' );
+		}
 
 		// Plugin was successfully activated, now activate the experiment.
 		if ( ! is_wp_error( $result ) ) {
@@ -291,6 +298,10 @@ class RequireGutenberg {
 		// No need to do anything if the theme we switched to supports Full Site Editing.
 		// Check if the block-templates folder exists, and if it does then early exit.
 		if ( file_exists( $new_theme_path . '/block-templates' ) || is_dir( $new_theme_path . '/block-templates' ) ) {
+			return;
+		}
+
+		if ( function_exists( 'gutenberg_is_fse_theme' ) ) {
 			return;
 		}
 
