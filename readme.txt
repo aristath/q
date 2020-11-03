@@ -14,6 +14,8 @@ Full-Site-Editing experimental theme.
 
 Q is an experimental theme for the next-generation Full Site Editing (FSE) currently available in Gutenberg.
 
+Development for this theme is done on GitHub: https://github.com/aristath/q
+
 == Resources ==
 
 * Screenshot photo: https://stocksnap.io/photo/abstract-art-04AXCGCBTW licenced under CC0.
