@@ -39,7 +39,7 @@ class Styles {
 	 * @var array
 	 */
 	protected $webfonts = [
-		'https://fonts.googleapis.com/css2?family=Literata&display=swap',
+		'https://fonts.googleapis.com/css2?family=Literata:wght@200..900&display=swap',
 	];
 
 	/**
