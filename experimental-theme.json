@@ -83,14 +83,31 @@
 					}
 				],
 				"fontFamilyGroups": [
-					{
-						"name": "Web safe",
-						"slug": "web-safe"
-					},
-					{
-						"name": "Opinionated",
-						"slug": "opinionated"
-					}
+					{ "name": "Web safe", "slug": "web-safe" },
+					{ "name": "Opinionated", "slug": "opinionated" }
+				],
+				"fontStyles": [
+					{ "name": "Regular", "slug": "normal" },
+					{ "name": "Italic", "slug": "italic" }
+				],
+				"fontWeights": [
+					{ "slug": "200", "name": "Thin" },
+					{ "slug": "300", "name": "Light" },
+					{ "slug": "400", "name": "Regular" },
+					{ "slug": "500", "name": "Medium" },
+					{ "slug": "600", "name": "Semibold" },
+					{ "slug": "700", "name": "Bold" },
+					{ "slug": "800", "name": "Heavy" },
+					{ "slug": "900", "name": "Black" }
+				],
+				"textTransforms": [
+					{ "name": "AB", "slug": "uppercase" },
+					{ "name": "ab", "slug": "lowercase" },
+					{ "name": "Ab", "slug": "capitalize" }
+				],
+				"textDecorations": [
+					{ "name": "Underline", "slug": "underline", "value": "underline" },
+					{ "name": "Strikethrough", "slug": "strikethrough", "value": "line-through" }
 				],
 				"customFontSize": false,
 				"customLineHeight": true
