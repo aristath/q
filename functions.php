@@ -27,7 +27,7 @@ add_action(
 		add_theme_support( 'widgets-block-editor' );
 		add_theme_support( 'block-nav-menus' );
 
-		// Experimental - See https://github.com/WordPress/gutenberg/pull/25220
+		// Experimental - See https://github.com/WordPress/gutenberg/pull/25220.
 		add_theme_support( 'split-block-styles' );
 
 		// Support a custom color palette.
