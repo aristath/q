@@ -51,9 +51,17 @@ class BlockStyles {
 		if ( ! in_array( $block['blockName'], self::$blocks, true ) ) {
 			$path = get_theme_file_path( "styles/blocks/{$block['blockName']}.css" );
 			if ( file_exists( $path ) ) {
-				echo '<style>';
-				include $path;
-				echo '</style>';
+				if ( function_exists( 'gutenberg_register_core_block_styles' ) ) {
+					// If the function exists then we're loading the stylesheets separately and we need to append our styles to them.
+					ob_start();
+					include $path;
+					wp_add_inline_style( 'wp-block-' . str_replace( 'core/', '', $block['blockName'] ), ob_get_clean() );
+				} else {
+					// The function does not exist so we'll just add our styles inline.
+					echo '<style>';
+					include $path;
+					echo '</style>';
+				}
 			}
 			self::$blocks[] = $block['blockName'];
 		}
