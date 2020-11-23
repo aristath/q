@@ -87,18 +87,18 @@
 					{ "name": "Opinionated", "slug": "opinionated" }
 				],
 				"fontStyles": [
-					{ "name": "Regular", "slug": "normal" },
-					{ "name": "Italic", "slug": "italic" }
+					{ "name": "Regular", "slug": "normal", "value": "normal" },
+					{ "name": "Italic", "slug": "italic", "value": "italic" }
 				],
 				"fontWeights": [
-					{ "slug": "200", "name": "Thin" },
-					{ "slug": "300", "name": "Light" },
-					{ "slug": "400", "name": "Regular" },
-					{ "slug": "500", "name": "Medium" },
-					{ "slug": "600", "name": "Semibold" },
-					{ "slug": "700", "name": "Bold" },
-					{ "slug": "800", "name": "Heavy" },
-					{ "slug": "900", "name": "Black" }
+					{ "slug": "200", "value": "200", "name": "Thin" },
+					{ "slug": "300", "value": "300", "name": "Light" },
+					{ "slug": "400", "value": "400", "name": "Regular" },
+					{ "slug": "500", "value": "500", "name": "Medium" },
+					{ "slug": "600", "value": "600", "name": "Semibold" },
+					{ "slug": "700", "value": "700", "name": "Bold" },
+					{ "slug": "800", "value": "800", "name": "Heavy" },
+					{ "slug": "900", "value": "900", "name": "Black" }
 				],
 				"textTransforms": [
 					{ "name": "AB", "slug": "uppercase" },
