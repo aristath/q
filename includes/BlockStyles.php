@@ -44,18 +44,20 @@ class BlockStyles {
 	 * @return string       Returns the HTML.
 	 */
 	public function render_block( $html, $block ) {
+		global $wp_styles;
 		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			return '';
 		}
 
 		if ( ! in_array( $block['blockName'], self::$blocks, true ) ) {
-			$path = get_theme_file_path( "styles/blocks/{$block['blockName']}.css" );
+			$path   = get_theme_file_path( "styles/blocks/{$block['blockName']}.css" );
+			$handle = 'wp-block-' . str_replace( 'core/', '', $block['blockName'] );
 			if ( file_exists( $path ) ) {
-				if ( function_exists( 'gutenberg_register_core_block_styles' ) ) {
+				if ( function_exists( 'gutenberg_register_core_block_styles' ) && isset( $wp_styles->registered[ $handle ] ) ) {
 					// If the function exists then we're loading the stylesheets separately and we need to append our styles to them.
 					ob_start();
 					include $path;
-					wp_add_inline_style( 'wp-block-' . str_replace( 'core/', '', $block['blockName'] ), ob_get_clean() );
+					wp_add_inline_style( $handle, ob_get_clean() );
 				} else {
 					// The function does not exist so we'll just add our styles inline.
 					echo '<style>';
