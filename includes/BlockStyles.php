@@ -45,7 +45,7 @@ class BlockStyles {
 	 */
 	public function render_block( $html, $block ) {
 		global $wp_styles;
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return '';
 		}
 
