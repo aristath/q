@@ -32,6 +32,7 @@ class BlockStyles {
 	 */
 	public function __construct() {
 		add_filter( 'render_block', [ $this, 'render_block' ], 10, 2 );
+		add_action( 'wp_footer', [ $this, 'inline_core_block_styles' ], 1 );
 	}
 
 	/**
@@ -68,5 +69,38 @@ class BlockStyles {
 			self::$blocks[] = $block['blockName'];
 		}
 		return $html;
+	}
+
+	/**
+	 * Inline core block styles.
+	 *
+	 * @access public
+	 * @since 0.6.1
+	 * @return void
+	 */
+	public function inline_core_block_styles() {
+		global $wp_styles;
+		foreach ( $wp_styles->queue as $queued ) {
+			if ( 0 === strpos( $queued, 'wp-block-' ) && isset( $wp_styles->registered[ $queued ] ) ) {
+				$style = $wp_styles->registered[ $queued ];
+
+				$path = str_replace( trailingslashit( site_url() ), trailingslashit( ABSPATH ), $style->src );
+
+				if ( file_exists( $path ) ) {
+
+					echo '<style id="' . esc_attr( $queued ) . '-css">';
+
+					include $path;
+
+					if ( is_array( $style->extra ) && isset( $style->extra['after'] ) ) {
+						echo implode( '', $style->extra['after'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
+
+					echo '</style>';
+
+					unset( $wp_styles->registered[ $queued ] );
+				}
+			}
+		}
 	}
 }
