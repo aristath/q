@@ -89,8 +89,7 @@ class BlockStyles {
 				if ( file_exists( $path ) ) {
 
 					echo '<style id="' . esc_attr( $queued ) . '-css">';
-
-					include $path;
+					echo $this->minify( file_get_contents( $path ) );
 
 					if ( is_array( $style->extra ) && isset( $style->extra['after'] ) ) {
 						echo implode( '', $style->extra['after'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -102,5 +101,22 @@ class BlockStyles {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Slightly minify styles.
+	 *
+	 * Removes inline comments and whitespace.
+	 *
+	 * @since 0.6.1
+	 * @param string $styles The styles we want to minify.
+	 * @return string
+	 */
+	public function minify( $styles ) {
+		$re1 = '(?sx)("(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')|/\\* (?> .*? \\*/ )';
+		$re2 = '(?six)("(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')|\\s*+ ; \\s*+ ( } ) \\s*+|\\s*+ ( [*$~^|]?+= | [{};,>~+-] | !important\\b ) \\s*+|( [[(:] ) \\s++|\\s++ ( [])] )|\\s++ ( : ) \\s*+(?!(?>[^{}"\']++|"(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')*+{)|^ \\s++ | \\s++ \\z|(\\s)\\s+';
+
+		$styles = preg_replace( "%$re1%", '$1', $styles );
+		return preg_replace( "%$re2%", '$1$2$3$4$5$6$7', $styles );
 	}
 }
