@@ -1,0 +1,10 @@
+.wp-block-post-comments .commentlist {
+    padding: 0;
+    list-style: none;
+}
+
+.wp-block-post-comments .comment-author > img {
+    border-radius: 50%;
+    overflow: hidden;
+    max-width: var(--wp--preset--font-size--large);
+}

@@ -33,6 +33,7 @@ class Styles {
 		'blocks/core/button',
 		'blocks/core/media-text',
 		'blocks/core/navigation',
+		'blocks/core/post-comments',
 		'blocks/core/template-part',
 	];
 
