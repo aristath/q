@@ -43,11 +43,11 @@ $tt1_blocks_comment_count = get_comments_number();
 		<ol class="comment-list">
 			<?php
 			wp_list_comments(
-				array(
+				[
 					'avatar_size' => 60,
 					'style'       => 'ol',
 					'short_ping'  => true,
-				)
+                ]
 			);
 			?>
 		</ol><!-- .comment-list -->
