@@ -42,10 +42,10 @@ class BlockStyles {
 				if ( file_exists( $path ) ) {
 
 					echo '<style id="' . esc_attr( $queued ) . '-css">';
-					echo $this->minify( file_get_contents( $path ) );
+					echo $this->minify( file_get_contents( $path ) ); // phpcs:ignore WordPress.Security.EscapeOutput, WordPress.WP.AlternativeFunctions
 
 					if ( is_array( $style->extra ) && isset( $style->extra['after'] ) ) {
-						echo implode( '', $style->extra['after'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo implode( '', $style->extra['after'] ); // phpcs:ignore WordPress.Security.EscapeOutput
 					}
 
 					echo '</style>';
