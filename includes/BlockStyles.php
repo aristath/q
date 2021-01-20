@@ -21,7 +21,7 @@ class BlockStyles {
 	 * @since 1.0
 	 */
 	public function __construct() {
-		add_action( 'wp_footer', [ $this, 'inline_core_block_styles' ], 1 );
+		add_action( 'wp_head', [ $this, 'inline_core_block_styles' ], 1 );
 	}
 
 	/**
