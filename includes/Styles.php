@@ -86,7 +86,7 @@ class Styles {
 		// Add webfonts.
 		foreach ( $this->webfonts as $webfont ) {
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-				echo wptt_get_webfont_styles( $webfont );
+				echo wptt_get_webfont_styles( $webfont ); // phpcs:ignore
 			} else {
 				echo self::minify( wptt_get_webfont_styles( $webfont ) ); // phpcs:ignore
 			}
