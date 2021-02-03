@@ -27,20 +27,27 @@
 	text-align: center;
 }
 
-.alignleft {
+.alignleft,
+.alignright,
+.wp-site-blocks .wp-block-post-content .alignleft,
+.wp-site-blocks .wp-block-post-content .alignright {
+	max-width: calc(var(--wp--custom--content--default-width) / 2);
+}
+
+.alignleft,
+.wp-site-blocks .wp-block-post-content .alignleft {
 	float: left;
 
 	/* margin-left: calc(50% - var(--wp--custom--content--default-width) / 2); */
-	margin-right: 2em;
-	max-width: 360px;
+	margin-right: 1em;
 }
 
-.alignright {
+.alignright,
+.wp-site-blocks .wp-block-post-content .alignright {
 	float: right;
 
 	/* margin-right: calc(50% - var(--wp--custom--content--default-width) / 2); */
-	margin-left: 2em;
-	max-width: 360px;
+	margin-left: 1em;
 }
 
 .has-background {
