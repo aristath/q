@@ -72,13 +72,24 @@ class Styles {
 			return;
 		}
 		echo '<style>';
+		ob_start();
 		foreach ( $this->styles as $style ) {
 			include get_theme_file_path( "styles/$style.css" );
 		}
 
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			echo ob_get_clean(); // phpcs:ignore
+		} else {
+			echo self::minify( ob_get_clean() ); // phpcs:ignore
+		}
+
 		// Add webfonts.
 		foreach ( $this->webfonts as $webfont ) {
-			echo wptt_get_webfont_styles( $webfont ); // phpcs:ignore
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				echo wptt_get_webfont_styles( $webfont );
+			} else {
+				echo self::minify( wptt_get_webfont_styles( $webfont ) ); // phpcs:ignore
+			}
 		}
 		echo '</style>';
 	}
@@ -118,5 +129,23 @@ class Styles {
 				filemtime( get_theme_file_path( 'style.css' ) )
 			);
 		}
+	}
+
+	/**
+	 * Slightly minify styles.
+	 *
+	 * Removes inline comments and whitespace.
+	 *
+	 * @static
+	 * @since 0.6.1
+	 * @param string $styles The styles we want to minify.
+	 * @return string
+	 */
+	public static function minify( $styles ) {
+		$re1 = '(?sx)("(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')|/\\* (?> .*? \\*/ )';
+		$re2 = '(?six)("(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')|\\s*+ ; \\s*+ ( } ) \\s*+|\\s*+ ( [*$~^|]?+= | [{};,>~+-] | !important\\b ) \\s*+|( [[(:] ) \\s++|\\s++ ( [])] )|\\s++ ( : ) \\s*+(?!(?>[^{}"\']++|"(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')*+{)|^ \\s++ | \\s++ \\z|(\\s)\\s+';
+
+		$styles = preg_replace( "%$re1%", '$1', $styles );
+		return preg_replace( "%$re2%", '$1$2$3$4$5$6$7', $styles );
 	}
 }
