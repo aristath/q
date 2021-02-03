@@ -74,13 +74,6 @@ add_filter(
 require_once 'includes/Styles.php';
 new \QTheme\Styles();
 
-// Check if https://github.com/WordPress/gutenberg/pull/28358 has been merged.
-if ( ! function_exists( 'gutenberg_optimize_block_styles_loading' ) ) {
-	// Add the block-styles loader.
-	require_once 'includes/BlockStyles.php';
-	new \QTheme\BlockStyles();
-}
-
 // Add scripts.
 require_once 'includes/Scripts.php';
 new \QTheme\Scripts();
