@@ -29,11 +29,6 @@ class Styles {
 		'comment-form',
 		'forms',
 		'colors',
-
-		'blocks/core/button',
-		'blocks/core/media-text',
-		'blocks/core/navigation',
-		'blocks/core/template-part',
 	];
 
 	/**
