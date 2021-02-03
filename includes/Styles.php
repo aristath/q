@@ -63,7 +63,7 @@ class Styles {
 
 	/**
 	 * Add inline styles for blocks.
-	 * 
+	 *
 	 * @access public
 	 * @since 0.6.2
 	 * @return void
