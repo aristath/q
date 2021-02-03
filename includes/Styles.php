@@ -58,6 +58,31 @@ class Styles {
 
 		add_action( 'wp_head', [ $this, 'head' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+	}
+
+	/**
+	 * Add inline styles for blocks.
+	 * 
+	 * @access public
+	 * @since 0.6.2
+	 * @return void
+	 */
+	public function enqueue_scripts() {
+		foreach ( glob( get_template_directory() . '/styles/blocks/core/*.css' ) as $filename ) {
+			$block = str_replace(
+				[ get_template_directory() . '/styles/blocks/core/', '.css' ],
+				'',
+				$filename
+			);
+			ob_start();
+			include get_template_directory() . "/styles/blocks/core/$block.css";
+			$styles = ob_get_clean();
+			if ( ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG ) {
+				$styles = self::minify( $styles );
+			}
+			wp_add_inline_style( "wp-block-$block", $styles );
+		}
 	}
 
 	/**

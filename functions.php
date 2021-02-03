@@ -74,9 +74,11 @@ add_filter(
 require_once 'includes/Styles.php';
 new \QTheme\Styles();
 
-// Add the block-styles loader.
-require_once 'includes/BlockStyles.php';
-new \QTheme\BlockStyles();
+if ( ! function_exists( 'gutenberg_optimize_block_styles_loading' ) ) {
+	// Add the block-styles loader.
+	require_once 'includes/BlockStyles.php';
+	new \QTheme\BlockStyles();
+}
 
 // Add scripts.
 require_once 'includes/Scripts.php';
