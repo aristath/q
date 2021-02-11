@@ -22,19 +22,6 @@ class Scripts {
 	 */
 	public function __construct() {
 		add_action( 'wp_footer', [ $this, 'skip_link' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'comment_script' ] );
-	}
-
-	/**
-	 * Enqueue the comments script.
-	 *
-	 * @access public
-	 * @since 1.0
-	 */
-	public function comment_script() {
-		if ( is_singular() ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
 	}
 
 	/**
