@@ -69,14 +69,14 @@ class RequireGutenberg {
 		}
 		?>
 		<div class="notice notice-warning require-gutenberg-notice-wrapper notice-alt<?php echo ' active-step-' . esc_attr( $active_step ); ?>">
-			<p><?php esc_html_e( 'This is an experimental theme and requires the Gutenberg plugin to be installed with the "Full Site Editing" experiment enabled.', 'q' ); ?></p>
+			<p><?php esc_html_e( 'This is an experimental theme and requires the Gutenberg plugin to be installed.', 'q' ); ?></p>
 			<div class="require-gutenberg require-gutenberg-install">
 				<p><?php esc_html_e( 'The Gutenberg plugin is not installed. Click the button below to install it.', 'q' ); ?></p>
 				<p><button class="button" onclick="wpThemesRequireGutenberg.installPlugin();" aria-label="<?php esc_attr_e( 'Install Gutenberg', 'q' ); ?>"><?php esc_html_e( 'Install Gutenberg', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-activate">
-				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated, or the "Full Site Editing" experiment is not enabled. Click the button below to enable the plugin and experiment.', 'q' ); ?></p>
-				<p><button class="button" onclick="wpThemesRequireGutenberg.activatePlugin();"><?php esc_html_e( 'Activate Plugin & Experiment.', 'q' ); ?></button></p>
+				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated. Click the button below to enable the plugin and experiment.', 'q' ); ?></p>
+				<p><button class="button" onclick="wpThemesRequireGutenberg.activatePlugin();"><?php esc_html_e( 'Activate Plugin.', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-success">
 				<p><?php esc_html_e( 'Congratulations! All steps required were completed. Enjoy your Full Site Editing experience.', 'q' ); ?></p>
