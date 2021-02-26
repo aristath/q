@@ -1,177 +1,181 @@
 {
-	"settings": {
-		"defaults": {
-			"custom": {
-				"typo": {
-					"rootSize": 16,
-					"adaptiveRatio": 0.8,
-					"scale": 1.333,
-					"lineHeight": 1.55
-				},
-				"content": {
-					"lineWidth": 74,
-					"defaultWidth": "calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--content--line-width) / 2)",
-					"wideWidth": "calc(1.5 * var(--wp--custom--content--default-width))",
-					"padding": "1em"
-				}
-			},
-			"color": {
-				"palette": [
-					{
-						"slug": "light",
-						"color": "#f5f7f9"
-					},
-					{
-						"slug": "dark",
-						"color": "#000"
-					}
-				],
-				"custom": false
-			},
-			"typography": {
-				"fontSizes": [
-					{
-						"name": "small",
-						"slug": "small",
-						"size": "calc(var(--wp--preset--font-size--normal) / var(--wp--custom--typo--scale))"
-					},
-					{
-						"name": "Normal",
-						"slug": "normal",
-						"size": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)"
-					},
-					{
-						"name": "Medium",
-						"slug": "medium",
-						"size": "calc(var(--wp--preset--font-size--normal) * var(--wp--custom--typo--scale))"
-					},
-					{
-						"name": "large",
-						"slug": "large",
-						"size": "calc(var(--wp--preset--font-size--medium) * var(--wp--custom--typo--scale))"
-					},
-					{
-						"name": "Huge",
-						"slug": "huge",
-						"size": "calc(var(--wp--preset--font-size--large) * var(--wp--custom--typo--scale))"
-					}
-				],
-				"fontFamilies": [
-					{
-						"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-						"slug": "system",
-						"name": "System",
-						"group": "web-safe"
-					},
-					{
-						"fontFamily": "Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
-						"name": "Serif",
-						"slug": "serif",
-						"group": "web-safe"
-					},
-					{
-						"fontFamily": "Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco, \"Courier New\", Courier, monospace",
-						"name": "Monospace",
-						"slug": "monospace",
-						"group": "web-safe"
-					},
-					{
-						"fontFamily": "Literata, Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
-						"name": "Literata",
-						"slug": "literata",
-						"group": "opinionated"
-					}
-				],
-				"fontFamilyGroups": [
-					{ "name": "Web safe", "slug": "web-safe" },
-					{ "name": "Opinionated", "slug": "opinionated" }
-				],
-				"fontStyles": [
-					{ "name": "Regular", "slug": "normal", "value": "normal" },
-					{ "name": "Italic", "slug": "italic", "value": "italic" }
-				],
-				"fontWeights": [
-					{ "slug": "200", "value": "200", "name": "Thin" },
-					{ "slug": "300", "value": "300", "name": "Light" },
-					{ "slug": "400", "value": "400", "name": "Regular" },
-					{ "slug": "500", "value": "500", "name": "Medium" },
-					{ "slug": "600", "value": "600", "name": "Semibold" },
-					{ "slug": "700", "value": "700", "name": "Bold" },
-					{ "slug": "800", "value": "800", "name": "Heavy" },
-					{ "slug": "900", "value": "900", "name": "Black" }
-				],
-				"textTransforms": [
-					{ "name": "AB", "slug": "uppercase" },
-					{ "name": "ab", "slug": "lowercase" },
-					{ "name": "Ab", "slug": "capitalize" }
-				],
-				"textDecorations": [
-					{ "name": "Underline", "slug": "underline", "value": "underline" },
-					{ "name": "Strikethrough", "slug": "strikethrough", "value": "line-through" }
-				],
-				"customFontSize": false,
-				"customLineHeight": true
-			}
-		}
-	},
-	"styles": {
-		"root": {
-			"color": {
-				"background": "var(--wp--preset--color--light)",
-				"text": "var(--wp--preset--color--dark)",
-				"link": "var(--wp--preset--color--dark)"
-			},
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--normal)",
-				"lineHeight": "var(--wp--custom--line-height--body)",
-				"fontFamily": "var(--wp--preset--font-family--literata)"
-			}
-		},
-		"core/paragraph": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--normal)",
-				"lineHeight": "var(--wp--custom--typo--line-height)"
-			}
-		},
-		"core/heading/h1": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--huge)",
-				"lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)"
-			}
-		},
-		"core/heading/h2": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--large)",
-				"lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)"
-			}
-		},
-		"core/heading/h3": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--medium)",
-				"lineHeight": "var(--wp--custom--typo--line-height)"
-			}
-		},
-		"core/heading/h4": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--normal)",
-				"lineHeight": "var(--wp--custom--typo--line-height)"
-			}
-		},
-		"core/heading/h5": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--small)",
-				"lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)"
-			}
-		},
-		"core/heading/h6": {
-			"typography": {
-				"fontSize": "var(--wp--preset--font-size--small)",
-				"lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)"
-			}
-		}	
-	},
-	"templateParts": {
-		"header": { "area": "header" },
-		"footer": { "area": "footer" }
-	}
+  "settings": {
+    "defaults": {
+      "custom": {
+        "typo": {
+          "rootSize": 16,
+          "adaptiveRatio": 0.8,
+          "scale": 1.333,
+          "lineHeight": 1.55
+        },
+        "content": {
+          "lineWidth": 74,
+          "defaultWidth": "calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--content--line-width) / 2)",
+          "wideWidth": "calc(1.5 * var(--wp--custom--content--default-width))",
+          "padding": "1em"
+        }
+      },
+      "color": {
+        "palette": [
+          {
+            "slug": "light",
+            "color": "#f5f7f9"
+          },
+          {
+            "slug": "dark",
+            "color": "#000"
+          }
+        ],
+        "custom": false
+      },
+      "typography": {
+        "fontSizes": [
+          {
+            "name": "small",
+            "slug": "small",
+            "size": "calc(var(--wp--preset--font-size--normal) / var(--wp--custom--typo--scale))"
+          },
+          {
+            "name": "Normal",
+            "slug": "normal",
+            "size": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)"
+          },
+          {
+            "name": "Medium",
+            "slug": "medium",
+            "size": "calc(var(--wp--preset--font-size--normal) * var(--wp--custom--typo--scale))"
+          },
+          {
+            "name": "large",
+            "slug": "large",
+            "size": "calc(var(--wp--preset--font-size--medium) * var(--wp--custom--typo--scale))"
+          },
+          {
+            "name": "Huge",
+            "slug": "huge",
+            "size": "calc(var(--wp--preset--font-size--large) * var(--wp--custom--typo--scale))"
+          }
+        ],
+        "fontFamilies": [
+          {
+            "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+            "slug": "system",
+            "name": "System",
+            "group": "web-safe"
+          },
+          {
+            "fontFamily": "Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
+            "name": "Serif",
+            "slug": "serif",
+            "group": "web-safe"
+          },
+          {
+            "fontFamily": "Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco, \"Courier New\", Courier, monospace",
+            "name": "Monospace",
+            "slug": "monospace",
+            "group": "web-safe"
+          },
+          {
+            "fontFamily": "Literata, Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
+            "name": "Literata",
+            "slug": "literata",
+            "group": "opinionated"
+          }
+        ],
+        "fontFamilyGroups": [
+          { "name": "Web safe", "slug": "web-safe" },
+          { "name": "Opinionated", "slug": "opinionated" }
+        ],
+        "fontStyles": [
+          { "name": "Regular", "slug": "normal", "value": "normal" },
+          { "name": "Italic", "slug": "italic", "value": "italic" }
+        ],
+        "fontWeights": [
+          { "slug": "200", "value": "200", "name": "Thin" },
+          { "slug": "300", "value": "300", "name": "Light" },
+          { "slug": "400", "value": "400", "name": "Regular" },
+          { "slug": "500", "value": "500", "name": "Medium" },
+          { "slug": "600", "value": "600", "name": "Semibold" },
+          { "slug": "700", "value": "700", "name": "Bold" },
+          { "slug": "800", "value": "800", "name": "Heavy" },
+          { "slug": "900", "value": "900", "name": "Black" }
+        ],
+        "textTransforms": [
+          { "name": "AB", "slug": "uppercase" },
+          { "name": "ab", "slug": "lowercase" },
+          { "name": "Ab", "slug": "capitalize" }
+        ],
+        "textDecorations": [
+          { "name": "Underline", "slug": "underline", "value": "underline" },
+          {
+            "name": "Strikethrough",
+            "slug": "strikethrough",
+            "value": "line-through"
+          }
+        ],
+        "customFontSize": false,
+        "customLineHeight": true
+      }
+    }
+  },
+  "styles": {
+    "root": {
+      "color": {
+        "background": "var(--wp--preset--color--light)",
+        "text": "var(--wp--preset--color--dark)",
+        "link": "var(--wp--preset--color--dark)"
+      },
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--normal)",
+        "lineHeight": "var(--wp--custom--line-height--body)",
+        "fontFamily": "var(--wp--preset--font-family--system)"
+      }
+    },
+    "core/paragraph": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--normal)",
+        "lineHeight": "var(--wp--custom--typo--line-height)"
+      }
+    },
+    "core/heading/h1": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--huge)",
+        "lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)"
+      }
+    },
+    "core/heading/h2": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--large)",
+        "lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)"
+      }
+    },
+    "core/heading/h3": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--medium)",
+        "lineHeight": "var(--wp--custom--typo--line-height)"
+      }
+    },
+    "core/heading/h4": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--normal)",
+        "lineHeight": "var(--wp--custom--typo--line-height)"
+      }
+    },
+    "core/heading/h5": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--small)",
+        "lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)"
+      }
+    },
+    "core/heading/h6": {
+      "typography": {
+        "fontSize": "var(--wp--preset--font-size--small)",
+        "lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)"
+      }
+    }
+  },
+  "templateParts": {
+    "header": { "area": "header" },
+    "footer": { "area": "footer" }
+  }
 }

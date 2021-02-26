@@ -39,7 +39,7 @@ class Styles {
 	 * @var array
 	 */
 	protected $webfonts = [
-		'https://fonts.googleapis.com/css2?family=Literata:wght@200..900&display=optional',
+		'literata' => 'https://fonts.googleapis.com/css2?family=Literata:wght@200..900&display=optional',
 	];
 
 	/**
@@ -54,6 +54,36 @@ class Styles {
 		add_action( 'wp_head', [ $this, 'head' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+	}
+
+	/**
+	 * Determine if we want to load the a webfont.
+	 * 
+	 * @access public
+	 * @since 1.0
+	 * 
+	 * @param string $webfont The webfont name.
+	 *
+	 * @return bool
+	 */
+	public function has_webfont( $webfont ) {
+
+		// WIP - return true early.
+		// Short-circuits the method until I can figure out a way to make it properly work.
+		return true;
+
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/screen.php';
+		}
+		$styles_settings = gutenberg_experimental_global_styles_settings( array( 'typography' ) );
+		if ( isset( $styles_settings['styles'] ) ) {
+			foreach ( $styles_settings['styles'] as $style ) {
+				if ( isset( $style['css'] ) && \strpos( $style['css'], "var(--wp--preset--font-family--$webfont);" ) ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -104,7 +134,11 @@ class Styles {
 		}
 
 		// Add webfonts.
-		foreach ( $this->webfonts as $webfont ) {
+		foreach ( $this->webfonts as $key => $webfont ) {
+			if ( ! $this->has_webfont( $key ) ) {
+				continue;
+			}
+
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				echo wptt_get_webfont_styles( $webfont ); // phpcs:ignore
 			} else {
