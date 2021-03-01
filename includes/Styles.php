@@ -58,10 +58,10 @@ class Styles {
 
 	/**
 	 * Determine if we want to load the a webfont.
-	 * 
+	 *
 	 * @access public
 	 * @since 1.0
-	 * 
+	 *
 	 * @param string $webfont The webfont name.
 	 *
 	 * @return bool
@@ -75,7 +75,7 @@ class Styles {
 		if ( ! function_exists( 'get_current_screen' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/screen.php';
 		}
-		$styles_settings = gutenberg_experimental_global_styles_settings( array( 'typography' ) );
+		$styles_settings = gutenberg_experimental_global_styles_settings( [ 'typography' ] );
 		if ( isset( $styles_settings['styles'] ) ) {
 			foreach ( $styles_settings['styles'] as $style ) {
 				if ( isset( $style['css'] ) && \strpos( $style['css'], "var(--wp--preset--font-family--$webfont);" ) ) {

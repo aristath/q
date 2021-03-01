@@ -41,7 +41,7 @@ class Scripts {
 
 	/**
 	 * Removes the embed script if there are no iframes.
-	 * 
+	 *
 	 * @access public
 	 * @since 0.6.3
 	 * @return void
