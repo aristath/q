@@ -163,11 +163,17 @@
       "typography": {
         "fontSize": "var(--wp--preset--font-size--small)",
         "lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)"
-      }
-    }
-  },
-  "templateParts": {
-    "header": { "area": "header" },
-    "footer": { "area": "footer" }
-  }
+			}
+		}
+	},
+	"templateParts": [
+		{
+			"name": "header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"area": "footer"
+		}
+	]
 }
