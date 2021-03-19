@@ -2,20 +2,6 @@
 	padding: 0 var(--wp--custom--content--padding);
 }
 
-.wp-site-blocks > *:not(.wp-block-post-content),
-.wp-site-blocks .wp-block-post-content > * {
-	max-width: var(--wp--custom--content--default-width);
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.wp-site-blocks .alignwide {
-	width: var(--wp--custom--content--wide-width);
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .wp-site-blocks .alignfull {
 	transform: translateX(calc(0px - var(--wp--custom--content--padding)));
 	width: calc(100% + 2 * var(--wp--custom--content--padding));
@@ -25,29 +11,6 @@
 
 .aligncenter {
 	text-align: center;
-}
-
-.alignleft,
-.alignright,
-.wp-site-blocks .wp-block-post-content .alignleft,
-.wp-site-blocks .wp-block-post-content .alignright {
-	max-width: calc(var(--wp--custom--content--default-width) / 2);
-}
-
-.alignleft,
-.wp-site-blocks .wp-block-post-content .alignleft {
-	float: left;
-
-	/* margin-left: calc(50% - var(--wp--custom--content--default-width) / 2); */
-	margin-right: 1em;
-}
-
-.alignright,
-.wp-site-blocks .wp-block-post-content .alignright {
-	float: right;
-
-	/* margin-right: calc(50% - var(--wp--custom--content--default-width) / 2); */
-	margin-left: 1em;
 }
 
 .has-background {
@@ -68,13 +31,6 @@ Start fix for bug: https://github.com/WordPress/gutenberg/issues/25610
 	width: calc(100% + 2 * var(--wp--custom--content--padding));
 	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
 	box-sizing: content-box;
-}
-
-.wp-site-blocks .wp-block-template-part > .wp-block-template-part:not(.alignfull) {
-	max-width: var(--wp--custom--content--default-width);
-	transform: translateX(calc(0px + var(--wp--custom--content--padding)));
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .wp-site-blocks .wp-block-template-part > .wp-block-template-part.alignfull {

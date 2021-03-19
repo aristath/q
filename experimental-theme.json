@@ -1,6 +1,10 @@
 {
 	"settings": {
 		"defaults": {
+			"layout": {
+				"contentSize": "var(--wp--custom--content--default-width))",
+				"wideSize": "var(--wp--custom--content--wide-width))"
+			},
 			"custom": {
 				"typo": {
 					"rootSize": 16,
