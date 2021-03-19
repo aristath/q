@@ -72,6 +72,8 @@ class Styles {
 		// Short-circuits the method until I can figure out a way to make it properly work.
 		return true;
 
+		/**
+		 * WIP
 		if ( ! function_exists( 'get_current_screen' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/screen.php';
 		}
@@ -84,6 +86,7 @@ class Styles {
 			}
 		}
 		return false;
+		 */
 	}
 
 	/**
