@@ -19,3 +19,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php do_action( 'wp_body_open' ); ?>
+
+<div class="wp-site-blocks">
+	<?php gutenberg_do_block_template_part( 'header' ); ?>
+	<main class="wp-block-group">

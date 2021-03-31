@@ -43,6 +43,9 @@ add_action(
 				],
 			]
 		);
+
+		// Add support for WooCommerce.
+		add_theme_support( 'woocommerce' );
 	}
 );
 
@@ -69,6 +72,29 @@ add_filter(
 		return $title;
 	}
 );
+
+/**
+ * @see https://github.com/WordPress/gutenberg/pull/30345
+ */
+if ( ! function_exists( 'gutenberg_do_block_template_part' ) ) {
+	/**
+	 * Print a template-part.
+	 *
+	 * @param string $part The template-part to print. Use "header" or "footer".
+	 *
+	 * @return void
+	 */
+	function gutenberg_do_block_template_part( $part ) {
+		if ( ! function_exists( 'gutenberg_get_block_template' ) ) {
+			return;
+		}
+		$template_part = gutenberg_get_block_template( get_stylesheet() . '//' . $part, 'wp_template_part' );
+		if ( ! $template_part || empty( $template_part->content ) ) {
+			return;
+		}
+		echo do_blocks( $template_part->content );
+	}
+}
 
 // Add global styles.
 require_once 'includes/Styles.php';
