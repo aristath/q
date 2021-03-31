@@ -43,9 +43,6 @@ add_action(
 				],
 			]
 		);
-
-		// Add support for WooCommerce.
-		add_theme_support( 'woocommerce' );
 	}
 );
 
