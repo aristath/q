@@ -1,11 +1,11 @@
 .wp-site-blocks {
-	padding: 0 var(--wp--custom--content--padding);
+	padding: 0 1em;
 }
 
 .wp-site-blocks .alignfull {
-	transform: translateX(calc(0px - var(--wp--custom--content--padding)));
-	width: calc(100% + 2 * var(--wp--custom--content--padding));
-	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
+	transform: translateX(-1em);
+	width: calc(100% + 2em);
+	max-width: calc(100% + 2em);
 	box-sizing: content-box;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .has-background {
-	padding: var(--wp--custom--content--padding);
+	padding: 1em;
 }
 
 .wp-site-blocks .alignfull .alignfull {
@@ -22,25 +22,3 @@
 	max-width: 100%;
 	box-sizing: border-box;
 }
-
-/*
-Start fix for bug: https://github.com/WordPress/gutenberg/issues/25610
-*/
-.wp-site-blocks .wp-block-template-part {
-	transform: translateX(calc(0px - var(--wp--custom--content--padding)));
-	width: calc(100% + 2 * var(--wp--custom--content--padding));
-	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
-	box-sizing: content-box;
-}
-
-.wp-site-blocks .wp-block-template-part > .wp-block-template-part.alignfull {
-	transform: none;
-}
-
-.wp-site-blocks .wp-block-template-part > .wp-block-template-part.alignwide {
-	max-width: calc(100% + 2 * var(--wp--custom--content--padding));
-	box-sizing: content-box;
-}
-/*
-End fix for bug: https://github.com/WordPress/gutenberg/issues/25610
-*/
