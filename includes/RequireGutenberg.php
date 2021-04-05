@@ -75,7 +75,7 @@ class RequireGutenberg {
 				<p><button class="button" onclick="wpThemesRequireGutenberg.installPlugin();" aria-label="<?php esc_attr_e( 'Install Gutenberg', 'q' ); ?>"><?php esc_html_e( 'Install Gutenberg', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-activate">
-				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated. Click the button below to enable the plugin and experiment.', 'q' ); ?></p>
+				<p><?php esc_html_e( 'The Gutenberg plugin is installed but not activated. Click the button below to enable the plugin.', 'q' ); ?></p>
 				<p><button class="button" onclick="wpThemesRequireGutenberg.activatePlugin();"><?php esc_html_e( 'Activate Plugin.', 'q' ); ?></button></p>
 			</div>
 			<div class="require-gutenberg require-gutenberg-success">
