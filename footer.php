@@ -8,8 +8,8 @@
  */
 
 ?>
-    <?php gutenberg_do_block_template_part( 'footer' ); ?>
-    </main>
+	<?php gutenberg_do_block_template_part( 'footer' ); ?>
+	</main>
 </div>
 
 <?php wp_footer(); ?>

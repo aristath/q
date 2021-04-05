@@ -1,7 +1,7 @@
 <?php
 /**
  * Sidebar template file
- * 
+ *
  * This file is empty on purpose.
  * The only reason it exists is to avoid PHP warnings until WP Core no longer requires it.
  *
@@ -9,3 +9,5 @@
  *
  * @since 1.0
  */
+
+return;

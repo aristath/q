@@ -70,14 +70,13 @@ add_filter(
 	}
 );
 
-/**
- * @see https://github.com/WordPress/gutenberg/pull/30345
- */
 if ( ! function_exists( 'gutenberg_do_block_template_part' ) ) {
 	/**
 	 * Print a template-part.
 	 *
 	 * @param string $part The template-part to print. Use "header" or "footer".
+	 *
+	 * @see https://github.com/WordPress/gutenberg/pull/30345
 	 *
 	 * @return void
 	 */
@@ -89,7 +88,7 @@ if ( ! function_exists( 'gutenberg_do_block_template_part' ) ) {
 		if ( ! $template_part || empty( $template_part->content ) ) {
 			return;
 		}
-		echo do_blocks( $template_part->content );
+		echo do_blocks( $template_part->content ); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
 
