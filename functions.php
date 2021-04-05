@@ -26,23 +26,6 @@ add_action(
 		add_theme_support( 'experimental-custom-spacing' );
 		add_theme_support( 'widgets-block-editor' );
 		add_theme_support( 'block-nav-menus' );
-
-		// Support a custom color palette.
-		add_theme_support(
-			'editor-color-palette',
-			[
-				[
-					'name'  => __( 'Dark', 'q' ),
-					'slug'  => 'dark',
-					'color' => '#000000',
-				],
-				[
-					'name'  => __( 'Light', 'q' ),
-					'slug'  => 'light',
-					'color' => '#f5f7f9',
-				],
-			]
-		);
 	}
 );
 
