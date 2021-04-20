@@ -53,12 +53,6 @@ add_filter(
 	}
 );
 
-if ( ! function_exists( 'gutenberg_get_block_template' ) ) {
-	function gutenberg_get_block_template() {
-		return false;
-	}
-}
-
 if ( ! function_exists( 'gutenberg_do_block_template_part' ) ) {
 	/**
 	 * Print a template-part.
@@ -70,11 +64,13 @@ if ( ! function_exists( 'gutenberg_do_block_template_part' ) ) {
 	 * @return void
 	 */
 	function gutenberg_do_block_template_part( $part ) {
-		$template_part = gutenberg_get_block_template( get_stylesheet() . '//' . $part, 'wp_template_part' );
+		if ( ! function_exists( 'gutenberg_get_block_template' ) ) {
+			return;
+		}
+		$template_part = gutenberg_get_block_template( get_stylesheet() . '//' . $part, 'wp_template_part' ); // @phpstan-ignore-line
 		if ( ! $template_part || empty( $template_part->content ) ) {
 			return;
 		}
-
 		echo do_blocks( $template_part->content ); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
