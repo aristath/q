@@ -96,13 +96,7 @@
 			},
 			"spacing": {
 				"customPadding": true,
-				"units": [
-					{ "value": "px", "label": "px" }, 
-					{ "value": "em", "label": "em" }, 
-					{ "value": "rem", "label": "rem" }, 
-					{ "value": "vh", "label": "vh" }, 
-					{ "value": "vw", "label": "vw" }
-				]
+				"units": ["px", "em", "rem", "vh", "vw"]
 			}
 		}
 	},

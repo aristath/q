@@ -21,6 +21,7 @@ add_action(
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'custom-units' );
 		add_theme_support( 'experimental-link-color' );
 		add_theme_support( 'experimental-custom-spacing' );
 		add_theme_support( 'widgets-block-editor' );
