@@ -2,23 +2,10 @@
 	padding: 0 1em;
 }
 
-.wp-site-blocks .alignfull {
-	transform: translateX(-1em);
-	width: calc(100% + 2em);
-	max-width: calc(100% + 2em);
-	box-sizing: content-box;
-}
-
 .aligncenter {
 	text-align: center;
 }
 
 .has-background {
 	padding: 1em;
-}
-
-.wp-site-blocks .alignfull .alignfull {
-	transform: none;
-	max-width: 100%;
-	box-sizing: border-box;
 }
