@@ -2,6 +2,8 @@
     "devDependencies": {
         "@wordpress/eslint-plugin": "^7.2.0",
         "eslint": "^7.9.0",
+        "grunt": "^1.4.0",
+        "grunt-contrib-cssmin": "^4.0.0",
         "stylelint-config-wordpress": "^17.0.0"
     }
 }

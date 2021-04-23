@@ -51,7 +51,7 @@ class Styles {
 	public function __construct() {
 		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
 
-		add_action( 'wp_head', [ $this, 'head' ] );
+		add_action( 'wp_head', [ $this, 'head' ], 0 );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 	}
@@ -97,14 +97,24 @@ class Styles {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		foreach ( glob( get_template_directory() . '/styles/blocks/core/*.css' ) as $filename ) {
+
+		foreach ( $this->styles as $style ) {
+			wp_enqueue_style(
+				"q-$style", 
+				get_theme_file_uri( "styles/$style.min.css" ),
+				wp_get_theme()->get( 'Version' )
+			);
+			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "styles/$style.min.css" ) );
+		}
+
+		foreach ( glob( get_template_directory() . '/styles/blocks/core/*.min.css' ) as $filename ) {
 			$block = str_replace(
-				[ get_template_directory() . '/styles/blocks/core/', '.css' ],
+				[ get_template_directory() . '/styles/blocks/core/', '.min.css' ],
 				'',
 				$filename
 			);
 			ob_start();
-			include get_template_directory() . "/styles/blocks/core/$block.css";
+			include get_template_directory() . "/styles/blocks/core/$block.min.css";
 			$styles = ob_get_clean();
 			if ( ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG ) {
 				$styles = self::minify( $styles );
@@ -125,17 +135,6 @@ class Styles {
 			return;
 		}
 		echo '<style>';
-		ob_start();
-		foreach ( $this->styles as $style ) {
-			include get_theme_file_path( "styles/$style.css" );
-		}
-
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			echo ob_get_clean(); // phpcs:ignore
-		} else {
-			echo self::minify( ob_get_clean() ); // phpcs:ignore
-		}
-
 		// Add webfonts.
 		foreach ( $this->webfonts as $key => $webfont ) {
 			if ( ! $this->has_webfont( $key ) ) {
