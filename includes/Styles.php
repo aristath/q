@@ -100,8 +100,9 @@ class Styles {
 
 		foreach ( $this->styles as $style ) {
 			wp_enqueue_style(
-				"q-$style", 
+				"q-$style",
 				get_theme_file_uri( "styles/$style.min.css" ),
+				[],
 				wp_get_theme()->get( 'Version' )
 			);
 			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "styles/$style.min.css" ) );
