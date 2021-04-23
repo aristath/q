@@ -1,3 +1,0 @@
-.wp-block-navigation:not(.has-background) .wp-block-navigation__container .wp-block-navigation-link:not(.has-text-color) { /* stylelint-disable-line selector-class-pattern */
-	color: currentColor;
-}
