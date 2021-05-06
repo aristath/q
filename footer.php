@@ -8,7 +8,11 @@
  */
 
 ?>
-	<?php gutenberg_do_block_template_part( 'footer' ); ?>
+	<?php
+	if ( function_exists( 'gutenberg_do_block_template_part' ) ) {
+		gutenberg_do_block_template_part( 'footer' );
+	}
+	?>
 	</main>
 </div>
 
