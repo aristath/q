@@ -1,1 +1,1 @@
-.aligncenter{text-align:center}
+body{--content-size:calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--typo--line-width) / 2);--wide-size:calc(1.5 * (var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--typo--line-width) / 2)}.aligncenter{text-align:center}[class^=wp-container]>*{max-width:var(--content-size)}[class^=wp-container]>.alignwide{max-width:var(--wide-size)}[class^=wp-container]>.alignfull{max-width:none}
