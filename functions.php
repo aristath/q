@@ -27,6 +27,7 @@ add_action(
 		add_theme_support( 'widgets-block-editor' );
 		add_theme_support( 'block-nav-menus' );
 		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'editor-styles' );
 	}
 );
 
