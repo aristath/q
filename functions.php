@@ -52,3 +52,6 @@ new \QTheme\Styles();
 // Add scripts.
 require_once 'includes/Scripts.php';
 new \QTheme\Scripts();
+
+// Opt-in to separate styles loading.
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
