@@ -1,9 +1,9 @@
-.wp-site-blocks a {
+a {
 	text-decoration-thickness: 2px;
 	font-weight: 600;
 }
 
-.wp-site-blocks a:focus {
+a:focus {
 	outline: 2px solid;
 	outline-offset: 2px;
 	border-bottom-color: transparent;
