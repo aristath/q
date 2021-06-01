@@ -49,7 +49,8 @@ class Styles {
 	 * @since 1.0
 	 */
 	public function __construct() {
-		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'editor-styles' );
 
 		add_action( 'wp_head', [ $this, 'head' ], 0 );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
@@ -114,12 +115,8 @@ class Styles {
 				'',
 				$filename
 			);
-			ob_start();
-			include get_template_directory() . "/styles/blocks/core/$block.min.css";
-			$styles = ob_get_clean();
-			if ( ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG ) {
-				$styles = self::minify( $styles );
-			}
+
+			$styles = file_get_contents( get_template_directory() . "/styles/blocks/core/$block.min.css" );
 			wp_add_inline_style( "wp-block-$block", $styles );
 		}
 	}
@@ -135,6 +132,9 @@ class Styles {
 		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			return;
 		}
+
+		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
+
 		echo '<style>';
 		// Add webfonts.
 		foreach ( $this->webfonts as $key => $webfont ) {
@@ -159,6 +159,8 @@ class Styles {
 	 * @return void
 	 */
 	public function block_editor_assets() {
+		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
+
 		foreach ( $this->styles as $style ) {
 			wp_enqueue_style(
 				"q-$style",
