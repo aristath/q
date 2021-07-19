@@ -2,8 +2,8 @@
 
 Contributors: aristath
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, accessibility-ready
-Requires at least: 5.3
-Tested up to: 5.6
+Requires at least: 5.7
+Tested up to: 5.8
 Requires PHP: 7.0
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
