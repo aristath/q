@@ -71,7 +71,7 @@
 		"color": {
 			"background": "#f5f5f9",
 			"text": "#000",
-			"link": "#000"
+			"link": "currentColor"
 		},
 		"typography": {
 			"fontSize": "var(--wp--preset--font-size--normal)",
@@ -80,7 +80,7 @@
 		},
 		"elements": {
 			"link": {
-				"color": { "text": "#000" }
+				"color": { "text": "currentColor" }
 			},
 			"h1": {
 				"typography": {
