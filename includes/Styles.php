@@ -53,7 +53,7 @@ class Styles {
 		add_theme_support( 'editor-styles' );
 
 		add_action( 'wp_head', [ $this, 'head' ], 0 );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'block_editor_assets' ] );
+		add_action( 'admin_init', [ $this, 'block_editor_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 	}
 
@@ -162,20 +162,10 @@ class Styles {
 		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
 
 		foreach ( $this->styles as $style ) {
-			wp_enqueue_style(
-				"q-$style",
-				get_theme_file_uri( "styles/$style.css" ),
-				[],
-				filemtime( get_theme_file_path( "styles/$style.css" ) )
-			);
+			add_editor_style( "styles/$style.css" );
 
 			if ( file_exists( get_theme_file_path( "styles/$style-editor.css" ) ) ) {
-				wp_enqueue_style(
-					"q-$style-editor",
-					get_theme_file_uri( "styles/$style-editor.css" ),
-					[],
-					filemtime( get_theme_file_path( "styles/$style.css" ) )
-				);
+				add_editor_style( "styles/$style-editor.css" );
 			}
 		}
 
