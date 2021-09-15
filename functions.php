@@ -26,3 +26,9 @@ new \QTheme\Scripts();
 
 // Opt-in to separate styles loading.
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+add_filter(
+	'styles_inline_size_limit',
+	function( $size ) {
+		return 50000;
+	}
+);
