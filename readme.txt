@@ -20,4 +20,3 @@ Development for this theme is done on GitHub: https://github.com/aristath/q
 
 * Screenshot photo: https://stocksnap.io/photo/abstract-art-04AXCGCBTW licenced under CC0.
 * Font Loader: https://github.com/WPTT/webfont-loader licenced under MIT
-* RequireGutenberg class: https://github.com/WordPress/theme-experiments/blob/master/require-gutenberg/require-gutenberg.php licenced under GPL2
