@@ -1,9 +1,17 @@
 {
     "devDependencies": {
         "@wordpress/eslint-plugin": "^7.2.0",
+        "cssnano": "^5.0.12",
         "eslint": "^7.9.0",
-        "grunt": "^1.4.1",
-        "grunt-contrib-cssmin": "^4.0.0",
+        "postcss": "^8.4.4",
+        "postcss-cli": "^9.0.2",
         "stylelint-config-wordpress": "^17.0.0"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "postcss:global": "postcss assets/styles/*.css --base --no-map --dir assets/styles-min/",
+        "postcss:blocks": "postcss assets/styles/blocks/core/*.css --base --no-map --dir assets/styles-min/blocks/core/",
+        "build": "npm run postcss:global && npm run postcss:blocks"
     }
 }
