@@ -102,21 +102,21 @@ class Styles {
 		foreach ( $this->styles as $style ) {
 			wp_enqueue_style(
 				"q-$style",
-				get_theme_file_uri( "assets/styles/$style.min.css" ),
+				get_theme_file_uri( "assets/styles-min/$style.css" ),
 				[],
 				wp_get_theme()->get( 'Version' )
 			);
-			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "assets/styles/$style.min.css" ) );
+			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "assets/styles-min/$style.css" ) );
 		}
 
-		foreach ( glob( get_template_directory() . '/assets/styles/blocks/core/*.min.css' ) as $filename ) {
+		foreach ( glob( get_template_directory() . '/assets/styles-min/blocks/core/*.css' ) as $filename ) {
 			$block = str_replace(
-				[ get_template_directory() . '/assets/styles/blocks/core/', '.min.css' ],
+				[ get_template_directory() . '/assets/styles-min/blocks/core/', '.css' ],
 				'',
 				$filename
 			);
 
-			$styles = file_get_contents( get_template_directory() . "/assets/styles/blocks/core/$block.min.css" );
+			$styles = file_get_contents( get_template_directory() . "/assets/styles-min/blocks/core/$block.css" );
 			wp_add_inline_style( "wp-block-$block", $styles );
 		}
 	}
