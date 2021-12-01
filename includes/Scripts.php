@@ -32,7 +32,7 @@ class Scripts {
 	 */
 	public function footer() {
 		echo '<script>';
-		include get_theme_file_path( 'scripts/prefetch-on-hover.js' );
+		include get_theme_file_path( 'assets/scripts/prefetch-on-hover.js' );
 		echo '</script>';
 	}
 }

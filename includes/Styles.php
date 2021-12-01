@@ -102,21 +102,21 @@ class Styles {
 		foreach ( $this->styles as $style ) {
 			wp_enqueue_style(
 				"q-$style",
-				get_theme_file_uri( "styles/$style.min.css" ),
+				get_theme_file_uri( "assets/styles/$style.min.css" ),
 				[],
 				wp_get_theme()->get( 'Version' )
 			);
-			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "styles/$style.min.css" ) );
+			wp_style_add_data( "q-$style", 'path', get_theme_file_path( "assets/styles/$style.min.css" ) );
 		}
 
-		foreach ( glob( get_template_directory() . '/styles/blocks/core/*.min.css' ) as $filename ) {
+		foreach ( glob( get_template_directory() . '/assets/styles/blocks/core/*.min.css' ) as $filename ) {
 			$block = str_replace(
-				[ get_template_directory() . '/styles/blocks/core/', '.min.css' ],
+				[ get_template_directory() . '/assets/styles/blocks/core/', '.min.css' ],
 				'',
 				$filename
 			);
 
-			$styles = file_get_contents( get_template_directory() . "/styles/blocks/core/$block.min.css" );
+			$styles = file_get_contents( get_template_directory() . "/assets/styles/blocks/core/$block.min.css" );
 			wp_add_inline_style( "wp-block-$block", $styles );
 		}
 	}
@@ -162,10 +162,10 @@ class Styles {
 		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
 
 		foreach ( $this->styles as $style ) {
-			add_editor_style( "styles/$style.css" );
+			add_editor_style( "assets/styles/$style.css" );
 
-			if ( file_exists( get_theme_file_path( "styles/$style-editor.css" ) ) ) {
-				add_editor_style( "styles/$style-editor.css" );
+			if ( file_exists( get_theme_file_path( "assets/styles/$style-editor.css" ) ) ) {
+				add_editor_style( "assets/styles/$style-editor.css" );
 			}
 		}
 

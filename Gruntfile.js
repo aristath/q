@@ -5,17 +5,17 @@ module.exports = function(grunt) {
                 files: [
 					{
 						expand: true,
-						cwd: 'styles',
+						cwd: 'assets/styles',
 						src: [ '*.css', '!*.min.css' ],
-						dest: 'styles',
+						dest: 'assets/styles',
 						ext: '.min.css'
 					},
 					{
 						expand: true,
-						cwd: 'styles/blocks/core',
+						cwd: 'assets/styles/blocks/core',
 						src: [ '*.css', '!*.min.css' ],
-						dest: 'styles/blocks/core',
-						ext: '.min.css'	
+						dest: 'assets/styles/blocks/core',
+						ext: '.min.css'
 					}
 				]
 			}
