@@ -6,9 +6,6 @@ parameters:
     #level: max
     inferPrivatePropertyTypeFromConstructor: true
     paths:
-        - comments.php
-        - footer.php
         - functions.php
-        - header.php
         - index.php
         - includes/
