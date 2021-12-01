@@ -22,8 +22,8 @@
 
 <div class="wp-site-blocks">
 	<?php
-	if ( function_exists( 'gutenberg_do_block_template_part' ) ) {
-		gutenberg_do_block_template_part( 'header' );
+	if ( function_exists( 'block_template_part' ) ) {
+		block_template_part( 'header' );
 	}
 	?>
 	<main class="wp-block-group">

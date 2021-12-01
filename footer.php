@@ -9,8 +9,8 @@
 
 ?>
 	<?php
-	if ( function_exists( 'gutenberg_do_block_template_part' ) ) {
-		gutenberg_do_block_template_part( 'footer' );
+	if ( function_exists( 'block_template_part' ) ) {
+		block_template_part( 'footer' );
 	}
 	?>
 	</main>
