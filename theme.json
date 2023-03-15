@@ -1,6 +1,27 @@
 {
-	"version": 1,
+	"version": 2,
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
 	"settings": {
+		"useRootPaddingAwareAlignments": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#000",
+					"name": "Black",
+					"slug": "black"
+				},
+				{
+					"color": "#fff",
+					"name": "White",
+					"slug": "white"
+				},
+				{
+					"color": "#f5f5f9",
+					"name": "Light Gray",
+					"slug": "light-gray"
+				}
+			]
+		},
 		"layout": {
 			"contentSize": "calc((var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--typo--line-width) / 2)",
 			"wideSize": "calc(1.5 * (var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw) * var(--wp--custom--typo--line-width) / 2)"
@@ -14,36 +35,108 @@
 				{ "name": "Huge",   "slug": "huge",   "size": "calc(var(--wp--preset--font-size--large) * var(--wp--custom--typo--scale))" }
 			],
 			"fontFamilies": [
-				{ "name": "System",    "slug": "system",    "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif" },
-				{ "name": "Serif",     "slug": "serif",     "fontFamily": "Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif" },
-				{ "name": "Monospace", "slug": "monospace", "fontFamily": "Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco, \"Courier New\", Courier, monospace" },
-				{ "name": "Literata",  "slug": "literata",  "fontFamily": "Literata, Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif" }
-			],
-			"fontStyles": [
-				{ "name": "Regular", "slug": "normal", "value": "normal" },
-				{ "name": "Italic",  "slug": "italic", "value": "italic" }
-			],
-			"fontWeights": [
-				{ "slug": "200", "value": "200", "name": "Thin" },
-				{ "slug": "300", "value": "300", "name": "Light" },
-				{ "slug": "400", "value": "400", "name": "Regular" },
-				{ "slug": "500", "value": "500", "name": "Medium" },
-				{ "slug": "600", "value": "600", "name": "Semibold" },
-				{ "slug": "700", "value": "700", "name": "Bold" },
-				{ "slug": "800", "value": "800", "name": "Heavy" },
-				{ "slug": "900", "value": "900", "name": "Black" }
-			],
-			"textTransforms": [
-				{ "name": "AB", "slug": "uppercase" },
-				{ "name": "ab", "slug": "lowercase" },
-				{ "name": "Ab", "slug": "capitalize" }
-			],
-			"textDecorations": [
-				{ "name": "Underline",     "slug": "underline",    "value": "underline" },
-				{ "name": "Strikethrough", "slug": "strikethrough", "value": "line-through" }
+				{
+					"name": "System",
+					"slug": "system",
+					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif"
+				},
+				{
+					"name": "Serif",
+					"slug": "serif",
+					"fontFamily": "Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif"
+				},
+				{
+					"name": "Monospace",
+					"slug": "monospace",
+					"fontFamily": "Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco, \"Courier New\", Courier, monospace"
+				},
+				{
+					"name": "literata",
+					"slug": "literata",
+					"fontFamily": "literata, Constantia, \"Lucida Bright\", Lucidabright, \"Lucida Serif\", Lucida, \"DejaVu Serif\", \"Bitstream Vera Serif\", \"Liberation Serif\", Georgia, serif",
+					"fontFace": [
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlYZ5W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlaJ5W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+1F00-1FFF",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlYJ5W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0370-03FF",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlb55W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlY55W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlYp5W7i5aOtCS.woff2"
+							]
+						},
+						{
+							"fontFamily": "literata",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200 900",
+							"fontDisplay": "optional",
+							"unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+							"src": [
+								"file:./assets/fonts/literata/or38Q6P12-iJxAIgLa78DkrbXsDgk0oVDaDlbJ5W7i5aOg.woff2"
+							]
+						}
+					]
+				}
 			],
 			"customFontSize": true,
-			"customLineHeight": true
+			"lineHeight": true
 		},
 		"custom": {
 			"typo": {
@@ -55,75 +148,105 @@
 			}
 		},
 		"spacing": {
-			"customPadding": true,
-			"customMargin": true,
+			"padding": true,
+			"margin": true,
 			"units": ["px", "em", "rem", "%", "vh", "vw"]
 		},
 		"border": {
-			"customColor": true,
-			"customRadius": true,
-			"customStyle": true,
-			"customWidth": true
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
 		}
 	},
 	"styles": {
+		"blocks": {
+			"core/paragraph": {
+				"css": "&.has-drop-cap:not(:focus)::first-letter{font-size:4em;font-weight:200;}"
+			}
+		},
 		"color": {
 			"background": "#f5f5f9",
-			"text": "#000",
-			"link": "currentColor"
+			"text": "#000"
 		},
 		"typography": {
 			"fontSize": "var(--wp--preset--font-size--normal)",
-			"lineHeight": "var(--wp--custom--line-height--body)",
+			"lineHeight": "1.5",
 			"fontFamily": "var(--wp--preset--font-family--system)"
+		},
+		"spacing": {
+			"blockGap": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)",
+			"padding": {
+				"top": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)",
+				"bottom": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)",
+				"left": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)",
+				"right": "calc(var(--wp--custom--typo--root-size) * 1px + var(--wp--custom--typo--adaptive-ratio) * 1vw)"
+			}
 		},
 		"elements": {
 			"link": {
-				"color": { "text": "currentColor" }
+				"color": { "text": "currentColor" },
+				"typography": {
+					"fontWeight": "600"
+				},
+				":focus": {
+					"outline": {
+						"color": "currentColor",
+						"width": "2px",
+						"style": "solid",
+						"offset": "2px"
+					},
+					"border": {
+						"bottom": {
+							"color": "transparent"
+						}
+					}
+				}
 			},
 			"h1": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--huge)",
 					"lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)",
-					"fontWeight": 100
+					"fontWeight": "100"
 				}
 			},
 			"h2": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--large)",
 					"lineHeight": "calc(var(--wp--custom--typo--line-height) * 0.9)",
-					"fontWeight": 300
+					"fontWeight": "300"
 				}
 			},
 			"h3": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--medium)",
 					"lineHeight": "var(--wp--custom--typo--line-height)",
-					"fontWeight": 600
+					"fontWeight": "600"
 				}
 			},
 			"h4": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--normal)",
 					"lineHeight": "var(--wp--custom--typo--line-height)",
-					"fontWeight": 700
+					"fontWeight": "700"
 				}
 			},
 			"h5": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--small)",
 					"lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)",
-					"fontWeight": 900
+					"fontWeight": "900"
 				}
 			},
 			"h6": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--small)",
 					"lineHeight": "calc(var(--wp--custom--typo--line-height) * 1.16)",
-					"fontWeight": 900
+					"fontWeight": "900"
 				}
 			}
-		}
+		},
+		"css": "a{text-decoration-thickness:2px;}"
 	},
 	"templateParts": [
 		{ "name": "header", "area": "header" },

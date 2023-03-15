@@ -23,23 +23,7 @@ class Styles {
 	 */
 	protected $styles = [
 		'base',
-		'typography',
-		'layout',
-		'a11y',
-		'comment-form',
 		'forms',
-		'colors',
-	];
-
-	/**
-	 * Webfonts URLs.
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @var array
-	 */
-	protected $webfonts = [
-		'literata' => 'https://fonts.googleapis.com/css2?family=Literata:wght@200..900&display=optional',
 	];
 
 	/**
@@ -52,42 +36,8 @@ class Styles {
 		add_theme_support( 'wp-block-styles' );
 		add_theme_support( 'editor-styles' );
 
-		add_action( 'wp_head', [ $this, 'head' ], 0 );
 		add_action( 'admin_init', [ $this, 'block_editor_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-	}
-
-	/**
-	 * Determine if we want to load the a webfont.
-	 *
-	 * @access public
-	 * @since 1.0
-	 *
-	 * @param string $webfont The webfont name.
-	 *
-	 * @return bool
-	 */
-	public function has_webfont( $webfont ) {
-
-		// WIP - return true early.
-		// Short-circuits the method until I can figure out a way to make it properly work.
-		return true;
-
-		/**
-		 * WIP
-		if ( ! function_exists( 'get_current_screen' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/screen.php';
-		}
-		$styles_settings = gutenberg_experimental_global_styles_settings( [ 'typography' ] );
-		if ( isset( $styles_settings['styles'] ) ) {
-			foreach ( $styles_settings['styles'] as $style ) {
-				if ( isset( $style['css'] ) && \strpos( $style['css'], "var(--wp--preset--font-family--$webfont);" ) ) {
-					return true;
-				}
-			}
-		}
-		return false;
-		 */
 	}
 
 	/**
@@ -122,36 +72,6 @@ class Styles {
 	}
 
 	/**
-	 * Print styles in <head>.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return void
-	 */
-	public function head() {
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-			return;
-		}
-
-		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
-
-		echo '<style>';
-		// Add webfonts.
-		foreach ( $this->webfonts as $key => $webfont ) {
-			if ( ! $this->has_webfont( $key ) ) {
-				continue;
-			}
-
-			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-				echo wptt_get_webfont_styles( $webfont ); // phpcs:ignore
-			} else {
-				echo self::minify( wptt_get_webfont_styles( $webfont ) ); // phpcs:ignore
-			}
-		}
-		echo '</style>';
-	}
-
-	/**
 	 * Enqueue assets for the editor.
 	 *
 	 * @access public
@@ -159,24 +79,12 @@ class Styles {
 	 * @return void
 	 */
 	public function block_editor_assets() {
-		require_once get_theme_file_path( 'includes/wptt-webfont-loader.php' );
-
 		foreach ( $this->styles as $style ) {
 			add_editor_style( "assets/styles/$style.css" );
 
 			if ( file_exists( get_theme_file_path( "assets/styles/$style-editor.css" ) ) ) {
 				add_editor_style( "assets/styles/$style-editor.css" );
 			}
-		}
-
-		// Enqueue webfonts.
-		foreach ( $this->webfonts as $webfont ) {
-			wp_enqueue_style(
-				md5( $webfont ),
-				wptt_get_webfont_url( $webfont ),
-				[],
-				filemtime( get_theme_file_path( 'style.css' ) )
-			);
 		}
 	}
 
